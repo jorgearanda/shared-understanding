@@ -1,0 +1,176 @@
+\chapter{Details of the Contrast study}
+\label{app:Contrast}
+
+Most of the studies on which this thesis is based have been peer-reviewed and published. The exception is the \emph{Contrast} study, for which no publication yet exists. The reason is that I concluded my data collection for that study only recently, and writing this thesis has been more pressing than publishing the results of the study. However, in the interest of providing some context for the findings from the Contrast study discussed throughout the thesis, I offer some of the details of the design and execution of the study in this appendix.
+
+\section{Motivation}
+
+Our ``Requirements in the Wild'' paper \cite{Aranda2007} offered two competing hypotheses to explain the variability in project management practices in our cases. The first stated that the diversity of processes and practices in small firms can be explained as the result of evolutionary adaptation, as these firms have adapted to a specific niche. The second, in comparison, claimed that the choice of processes and practices is irrelevant for small firms with strong cultural cohesion, as the efficiency of team dynamics overrides any benefits based on process. For the first, the choice of processes and practices was an essential strategy for the survival of the firm; for the second they were accidental habits that might as well have been different had the organization members wished so.
+
+Thanks to Greg Wilson, we identified two organizations in which we could execute a comparative case study to evaluate these hypotheses. The organizations seemed to be ideal for a comparison for a variety of reasons. First, at the time we selected them, they had similar sizes (about 90 people). Second, both of them were well established, having been active for several years. Third, they serviced similar kinds of organizations; in particular, both organizations had clients in the health, insurance, and financial sectors. Fourth, and most importantly, the organizations had purportedly very different approaches to develop software.
+
+We knew from our requirements paper that Bespoker had a relatively formal, process- and document-heavy approach to software development. We were not sure, however, to what extent these processes and documents were an essential part of of the strategy of the organization, that is, to what extent they were incorporated in decision-making, and in coordination and communication, and to what extent they were formalities produced out of habit, convenience, or customer requests.
+
+In comparison, the second firm, which here we called Saville, was an advocate of Extreme Programming, something that was rather unusual given its moderate size. A tour of the organization confirmed, at least on a surface level, Saville's commitment to the Agile Manifesto: all projects were developed in team rooms, pair programming and story cards were commonplace, and customer representatives were present at all times to answer questions to developers.
+
+It seemed, then, that we had found two organizations with very similar contexts and very different software development strategies. This appeared to be a challenge to the first hypothesis and a confirmation of the second. Our motivation, therefore, was to probe this seeming support for the latter hypothesis, and to evaluate whether the differences were truly deep or superficial. The study eventually led to other, I believe more important, insights about coordination and communication in software development. But this was our initial reason to execute the study.
+
+
+
+\section{Design and execution}
+\label{sec:ContrastDesign}
+
+Our research questions called for a comparative case study of Bespoker and Saville. The unit of analysis was the organization itself.
+
+In both organizations I negotiated full access to the offices for three weeks. I visited Saville during the Summer and Bespoker during the Fall of 2009. During the three weeks that I spent at each site I attended meetings, performed fly-on-the-wall observations of developers at work, and interviewed roughly half of the members of the organization. For both organizations there were a few key people that I could not interview during my three-weeks period; I returned to the organizations when their schedules allowed me to get those interviews.
+
+At Saville I spent two weeks in its headquarters office and one week in the satellite office. I spent at least one day, but often more, sitting in each of the firm's team rooms, in any empty spot I could find. At Bespoker I was assigned a desk in one of the project areas. The strategy I used at Saville (to sit with the teams and informally interview anyone that seemed to be available at any given moment) did not work well at Bespoker, and during my first week at Bespoker I did not get much information: there was very little interaction happening verbally, and everyone would mostly work silently facing their computers most of the day, except during lunch time (and for some people, even during lunch time). Most of the visible verbal interaction was \emph{sotto voce}. So I resorted to scheduling brief interviews with members of the organization, which worked much better, as most people were happy to give some time to this study.
+
+As a result of my observations and interviews I wrote about two hundred pages of detailed notes, and I collected copies of some documents from both sites that I considered important or meaningful in some ways. I coded these qualitative data, iterating on my list of codes until I felt that the salient aspects of the notes were being properly considered.
+
+Although I endeavoured to remain objective, open, and impartial, the fact that I alone performed all data collection and analysis for this study may have introduced some biases in its findings. However, it also enabled me to gain the trust of many members of the organization, and to perform a thorough and cohesive analysis of the data.
+
+After I finished my observations, I applied a social networks survey to members of both organizations. The survey had the form of a spreadsheet, with seven questions to be answered for each member of the organization, so that Person A would answer each question for persons B to Z. To simplify the task of responding over 600 questions, the spreadsheet had a default, expected answer for each of them, and the respondent would simply need to change the answer for those questions he or she deemed necessary. One of my contacts at Saville tested the survey and suggested many improvements for clarity and for ease of responding. Specifically, the questions were the following:
+
+\begin{itemize}
+\item Write a 1 next to every person that you manage directly.
+
+\item Write a 1 next to every person that manages you directly.
+
+\item Write a 1 next to every name of people you wouldn't recognize.
+
+\item Professionally, how much do you interact with this person? (0=not at all, 1=a little, 2=lots)
+
+\item Personally, how much do you interact with this person? (0=not at all, 1=a little, 2=lots)
+
+\item How much do you depend on information from this person? (0=not at all,      1=a little, 2=lots)
+
+\item How much does this person depend on information from you? (0=not at all, 1=a little, 2=lots)
+
+\end{itemize}
+
+I had permission to send the survey to the full list of staff of Bespoker and to a randomly selected half of the staff at Saville. At Bespoker, 19 out of 47 people responded, or 40\% of the total. At Saville, 23 out of 43 people in the sample (and out of 90 people in the full organization) responded, or 53\% of the sample (and 26\% of the population). The respondents were evenly distributed between working teams in both organizations, but at Bespoker there was a higher rate of manager responses. As I describe in section \ref{sec:NetworkDensity}, this survey response bias appeared to affect some density figures. I wrote Python scripts to extract density results from these responses.
+
+
+
+\section{Details of the firms}
+
+\subsection{Saville}
+
+Saville is a 90-person software development firm founded in 1990. It now services a variety of industries, including health, insurance, finance, and the government. It has three major project divisions, each with about 25 people, although the number of people in each division changes depending on project demands. Saville has two offices in the Toronto area, both easily reachable through public transit, and all of its software development occurs in these offices. The headquarters are the larger office; two of the three divisions are located in the headquarters. Until recently all three divisions were located there, but space problems led the firm to rent another location and move one of its divisions there.
+
+Each division has a small number of team rooms, where all of the developers sit. In most teams developers do not have a permanent spot or desk. They have a locker where they can store their personal belongings, but they are expected to move around rooms (and within rooms) as necessary. This is less true at the satellite office, where there is an informal understanding that a seat is claimed by somebody in particular, even though at any given moment that person may be working at someone else's seat.
+
+Saville is an advocate of Extreme Programming and Lean Manufacturing techniques. It is involved in the Toronto Extreme Programming community, and has an office staffed by two persons dedicated to ensure that the processes, practices, and tools of all teams are consistent with the culture of the organization, and with helping all teams with coaching, training, and technical infrastructure issues.
+
+The organization did not start as an agile shop. In fact, the Agile movement did not exist as such when the firm was founded. Its conversion occurred as a result of the interest in Extreme Programming by two of the senior developers of the organization and by the direct influence of Kent Beck, the main proponent of Extreme Programming, who had been a Smalltalk consultant for the organization years before.
+
+However, I found that Saville was not simply an Extreme Programming firm: it would not do software development necessarily by the Extreme Programming book. Agile practices were common in some teams and infrequent in others. One of the divisions insisted in having all production code developed in pairs; another division would pair program only occasionally. All teams had a daily stand-up meeting, but while these meetings were highly informative in some teams, they were merely a formality in others. All teams used user stories and story cards to keep track of their requirements, but some also used more detailed documentation (usually because it was required by their customer), and one division employed two business analysts. Customer representatives were present in two of the three divisions. The picture that emerged was of a firm formed by three porous divisions with different (though generally high) levels of commitment to agile strategies and a careful control and reflection over its software practices and group formation.
+
+
+
+\subsection{Bespoker}
+
+Bespoker is a 43 person software development firm founded in 2001. At the time of our case selection it was a larger organization of nearly 90 people, but the firm was severely hit by the 2008-2009 recession and lost most of its contract staff before my observations began. Like Saville, it services the health, insurance, and finance industry. It also has data warehousing and web development projects.
+
+Bespoker has a team-based structure: teams are formed for a project; each team usually has one project manager, and every project falls under the portfolio of one of the partners of the organization. Physically, the headquarters and only offices are located in one site in the Toronto area easily reachable through public transit. Most of the analysis and software development occurs in this site, although the firm sometimes uses desks in its customers' offices, specially those of a bank, when possible and convenient. Although the members of a team sit in the same area, their desks are arranged to balance proximity and isolation. There are no cubicles, but there is a sense that a desk and its surrounding area is a person's own. Perhaps as a consequence of this the environment is much more quiet than at Saville, where there is a constant buzz of activity in every team room. At Bespoker there is verbal communication happening during office hours, but people sometimes choose to communicate over instant messaging or e-mail, even when they are a few steps away from each other.
+
+Software development at several teams in Bespoker usually follows a planned, iterative approach, with a discovery phase, several iterations, and deployment. In occasions iterations continue after deployment. The documents produced in the analysis section of each iteration can be quite thorough: one requirements document, for instance, was 83 pages long, and it had numerous UML diagrams of use cases, classes, and sequences. However, some projects, such as the outlying web development projects and the data warehousing one, do not seem to follow this structure, and even in teams that produce these documents there is often the sense that they are produced as deliverables or as artifacts of record, and they are not used intensely during development. Few of the developers I spoke to, for instance, claimed to read the specification before working on their next feature; they would rather talk to the analyst that produced the specification to figure out the purpose of their feature, and only use the document, on occasion, as a reference. Though the firm claims to be as agile as possible given its context, this does not seem to be the case.
+
+Overall, the emerging picture of Bespoker is that of a firm with a mature homegrown process and set of practices, but little philosophical commitment to any software development strategy. It relies mostly on familiarity and habit, a strategy that has served it well over the years, but that is challenged by the firm's recent incursions in unfamiliar domains.
+
+
+\section{Results and observations}
+
+The following pages are intended to give a brief overview of some of the main findings from this study. Some of these findings also appear over the footnotes of Chapter \ref{chap:SharedUnd}, in the context in which they appear relevant to the discussion.
+
+\subsection{Adaptation \emph{vs.} cohesion}
+\label{sec:AdaptationVsCohesion}
+
+The question of whether firms adapt their software development processes to suit their niches or rely instead on cultural cohesion to survive was the original motivation for this study. If the former is true, then selecting the right process is essential; if the latter, then processes are basically accidental characteristics of software firms. The implications of both answers are deeply relevant to our field; hence the interest in resolving the question.
+
+Neither hypothesis is fully supported by our data. First, it is clear that both Bespoker and Saville have modified their development strategies over time. Saville underwent a considerable transformation roughly ten years after its foundation from a somewhat chaotic software house to a full-fledged, intentional Extreme Programming outfit. It has suffered other changes since then, but none at this level. Bespoker, in turn, has had to abandon (or at least downplay) its standard formalized process as it explores some unfamiliar domains, and it has incorporated more frequent iterations in its more traditional projects, partly in response to complaints that it is not ``agile enough.'' The move towards Extreme Programming at Saville does not appear to be based on demands of its niche---on the contrary, Saville has had to educate its customers and to manage their expectations, since its development strategies are atypical. In fact, several of Saville's minor changes have been an adjustment in the opposite direction: providing more structure and more formalization for the customers that request it. At Bespoker, some of the changes appear to be responses to the firm's context, or to inadequacies of its standard process in some domains. But if a team at Bespoker does not encounter strong obstacles to execute the strategies it is familiar with, then the team will simply use those strategies without much thought on optimizing them for their current situation. In other words, although part of the changes in both firms can be explained as adaptation to the demands of their niche, this adaptation is not judged essential to the survival of the firms, and in many cases the firms can impose the development strategy of their choice with only minor adaptations. The diversity of software development strategies does not seem to be dictated by organizational context.
+
+Second, it is also clear that cultural cohesion, on its own, is not enough to guarantee success in software development. While cohesion is strong (see below in section \ref{sec:NetworkDensity}) and assiduously nurtured in both organizations, their members care deeply about their development strategies and do not feel as if all sensible strategies would work equally well for them. Saville employs an agile coach, and two members of its staff have the responsibility to oversee the firm's software development strategies. Bespoker managers attempt to have a relatively tight control over its strategies, and are uncomfortable in the domains where they have to relinquish some of this control. Therefore, although cohesion seems to be a very relevant characteristic of both firms, the claim that software development strategies are entirely accidental as long as the organization has a good degree of cohesion is not fully supported either.
+
+An explanation for the variety of software strategies that is based exclusively on a combination of both hypotheses is also unsatisfactory. Through my observations at Bespoker and Saville I realized that a significant part of the behaviour of both firms cannot be fully explained as a combination of evolutionary adaptation and reliance on cohesion. Personal convictions, habits, preferences, professional abilities, and tactical decisions all seem to play a role in the behaviour of the members of these firms; these elements are not properly captured with a combined-hypotheses model.
+
+The problem appears to arise from conflating several concepts in these hypotheses; concepts that should be kept separate due to their qualitative differences. The adaptation hypothesis merges project lifecycle processes, documentation, practices, and tools. Choices on some of these may be mandated by the organization's context, some may not. In turn, the cultural cohesion hypothesis merges preference, expertise and task familiarity with group cohesion proper; concepts that should be studied separately. This thesis articulates what I think is a more fitting framework for these concepts.
+
+
+\subsection{``Spreading the knowledge''}
+\label{sec:Spreading}
+
+The most interesting findings from my observations at Saville and Bespoker were the organizations' efforts at coordinating and communicating efficiently. These efforts were more evident and intentional at Saville than at Bespoker, but they were a core concern of both firms.
+
+Several members of Saville took an explicitly generalist approach to coordination and communication. They would refer to their efforts as ``spreading the knowledge,'' so that, for instance, pairs of programmers would often be selected on the basis of where and to whom did the team need to spread the knowledge of a component of their projects next. They talked about the need to avoid specialization (``silo culture''), and regretted the instances where specialization had taken a hold in the organization.
+
+When a team would be ready for a new user story, a group of about five people would hear a small, informal presentation of the user story by one of the team members, and would discuss implementation possibilities and challenges. Throughout the meeting, the team would list the tasks that were necessary to complete the story; at the end they would estimate the effort necessary to complete the task for a pair of programmers, and they would discuss who would take over the development of the story.
+
+Every morning, every team had a short ``stand-up meeting,'' in which the team members would discuss their previous day's activities and obstacles, and talk about possible activities for the day. Although in some teams this meeting had devolved to a rote and meaningless practice performed out of habit, in most others the meetings had clear benefits for the team members. 
+
+Saville's efforts to coordinate and communicate relied intensely on synchronous, proximate, and proportionate team interaction, and less directly on maturity. The stand-up meetings, as well as the user story definition practice and the efforts to ``spread the knowledge'' are but three of the many strategies used by the firm, as discussed in Chapter \ref{chap:SharedUnd}.
+
+In comparison, Bespoker had a less intentional aproach to ``spreading the knowledge.'' In fact, such knowledge was not visibly or audibly accessible most of the time: a silent observer such as myself could find very little about Bespoker's strategies without engaging with and interviewing the members of the organization. However, the firm has settled with several strategies to coordinate and communicate, strategies that are well-known to most members of the organization and that rely on formalization (for several projects) and direct face-to-face interactions with a few key people in a team (for other projects). When the firm enters into a new domain, or finds its context changing significantly in one of its older domains, as with the offshoring project, the struggles to coordinate and communicate are most evident.
+
+However, overall, Bespoker's coordination and communication strategies rely mostly on maturity, and to a lesser extent on synchrony, proximity, and proportionality. This points to a potential for improvement, considering that the organization is almost entirely co-located, and could explore synchronous and proximate interaction strategies with relative ease.
+
+
+\subsection{Network density}
+\label{sec:NetworkDensity}
+
+I extracted basic network density numbers from the survey at both sites. Table \ref{tab:NetworkDensity} presents the results. Note that for one question (``People you wouldn't recognize'') I inverted the direction of the question and of the answers, so it is now (``People you recognize'').
+
+\begin{table}[tph]
+\caption{\label{tab:NetworkDensity} Network densities of Bespoker and Saville}
+\centering
+\footnotesize{\begin{tabular}{p{5.6cm}p{4.0cm}p{4.0cm}}
+\hline \hline
+\vspace{1pt} \bfseries Network & \vspace{1pt} \bfseries Bespoker & \vspace{1pt} \bfseries Saville \\
+\hline
+\vspace{0.5pt} People you manage & \vspace{0.5pt} 7.09\% & \vspace{0.5pt} 1.45\% \\
+\hline
+\vspace{0.5pt} People that manage you & \vspace{0.5pt} 4.69\% & \vspace{0.5pt} 2.42\% \\
+\hline
+\vspace{0.5pt} People you recognize & \vspace{0.5pt} 92.33\% & \vspace{0.5pt} 88.70\% \\
+\hline
+\vspace{0.5pt} People you interact with professionally & \vspace{0.5pt} 44.97\% (at least a little); 15.90\% (lots) & \vspace{0.5pt} 47.49\% (at least a little); 19.08\% (lots) \\
+\hline
+\vspace{0.5pt} People you interact with personally & \vspace{0.5pt} 40.50\% (at least a little); 11.33\% (lots) & \vspace{0.5pt} 35.80\% (at least a little); 8.45\% (lots) \\
+\hline
+\vspace{0.5pt} People whose information you depend on & \vspace{0.5pt} 27.92\% (at least a little); 10.30\% (lots) & \vspace{0.5pt} 21.11\% (at least a little); 7.39\% (lots) \\
+\hline
+\vspace{0.5pt} People who depend on your information & \vspace{0.5pt} 26.32\% (at least a little); 8.01\% (lots) & \vspace{0.5pt} 22.37\% (at least a little); 8.60\% (lots) \\
+\hline
+\end{tabular}}
+\end{table}
+
+Some of these figurs require explanation or discussion. More managers responded to the survey at Bespoker than at Saville, which partially explains the differences in the first question; the other part of the explanation being the somewhat more pyramidal hierarchy at Bespoker. The number for  ``people you recognize'' at Bespoker, though higher than at Saville, is more alarming, considering that Bespoker has half the staff of Saville and that it has a single development site against Saville's two. Both firms, however, seem to be crossing a threshold where more and more of their peers will be strangers for them, should the firms keep increasing in size.
+
+These basic network density numbers may be misleading, as both Bespoker and Saville have several teams where, presumably, workflow is far more intense than table \ref{tab:NetworkDensity} indicates. To explore this I performed an additional analysis of the density numbers, where I would only consider a participant's responses corresponding to the team the participant belongs to. For this second analysis I ignored responses from managers and support staff. The results are summarized in table \ref{tab:NetworkClusters}.
+
+\begin{table}[tph]
+\caption{\label{tab:NetworkClusters} Team-based network densities of Bespoker and Saville}
+\centering
+\footnotesize{\begin{tabular}{p{5.6cm}p{4.0cm}p{4.0cm}}
+\hline \hline
+\vspace{1pt} \bfseries Network & \vspace{1pt} \bfseries Bespoker & \vspace{1pt} \bfseries Saville \\
+\hline
+\vspace{0.5pt} People you manage & \vspace{0.5pt} 26.21\% & \vspace{0.5pt} 5.90\% \\
+\hline
+\vspace{0.5pt} People that manage you & \vspace{0.5pt} 11.62\% & \vspace{0.5pt} 6.55\% \\
+\hline
+\vspace{0.5pt} People you recognize & \vspace{0.5pt} 97.09\% & \vspace{0.5pt} 98.91\% \\
+\hline
+\vspace{0.5pt} People you interact with professionally & \vspace{0.5pt} 83.50\% (at least a little); 51.46\% (lots) & \vspace{0.5pt} 70.96\% (at least a little); 39.96\% (lots) \\
+\hline
+\vspace{0.5pt} People you interact with personally & \vspace{0.5pt} 59.22\% (at least a little); 20.39\% (lots) & \vspace{0.5pt} 41.48\% (at least a little); 12.23\% (lots) \\
+\hline
+\vspace{0.5pt} People whose information you depend on & \vspace{0.5pt} 53.40\% (at least a little); 22.33\% (lots) & \vspace{0.5pt} 41.27\% (at least a little); 22.05\% (lots) \\
+\hline
+\vspace{0.5pt} People who depend on your information & \vspace{0.5pt} 55.34\% (at least a little); 16.50\% (lots) & \vspace{0.5pt} 37.99\% (at least a little); 19.21\% (lots) \\
+\hline
+\end{tabular}}
+\end{table}
+
+Unsurprisingly, the density numbers are higher across the board. However, a note of caution in interpreting this table is necessary. For Saville there are three clusters, corresponding to its divisions. Bespoker does not have such an organizational structure; it creates teams on a project basis. Among the respondents I was able to use data for six of Bespoker's projects, some of them with very few participants. Naturally, then, information dependence and interaction were higher in the case of Bespoker. When analyzing these tables, the reader should remember that these basic density figures are meant to be analyzed as part of the larger body of collected data of the Contrast study, not as stand-alone descriptions of the two firms.

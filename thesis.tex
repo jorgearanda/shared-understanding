@@ -1,0 +1,84 @@
+\documentclass{ut-thesis}
+
+\usepackage{authordate}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{lscape}
+\usepackage{hyphenat}
+
+\degree{Doctor of Philosophy}
+\department{Computer Science}
+\gradyear{2010}
+\author{Jorge Aranda}
+\title{A Theory of Shared Understanding \\ for Software Organizations}
+
+\setcounter{tocdepth}{2}
+
+\begin{document}
+
+\begin{preliminary}
+\maketitle
+
+\begin{abstract}
+Effective coordination and communication are essential to the success of software organizations, but their study to date has been impaired by theoretical confusion and fragmentation. I articulate a theory that argues that the members of software organizations face a constant struggle to share and negotiate an understanding of their goals, plans, status, and context. This struggle lies at the heart of their coordination and communication problems. The theory proposes an analysis of organizational strategies based on four attributes of interaction that foster the development of shared understanding: synchrony, proximity, proportionality, and maturity. Organizations that have values, structures, and practices which facilitate these qualities find it easier to coordinate and communicate effectively.
+
+This argument has serious implications for traditional concepts in our literature. Project lifecycle processes and documentation are poor substitutes for informal but unscalable coordination and communication mechanisms. Practices and tools are valuable to the extent that they enable the development of shared understanding across our criteria. Co-location and group cohesion take advantage of the four criteria and therefore have direct advantages for software teams. Finally, growth is detrimental to the effectiveness of the organization because it hinders the use of small-scale mechanisms and it leads to an undesirable formalization.
+
+The theory is supported with empirical evidence collected from five case studies of a wide variety of software organizations, and it has explanatory and predictive power. The thesis links this theory to other current research efforts and shows that it complements and enhances them by providing a more solid theoretical foundation and by reclaiming the relevance of synchronous, proximate, proportionate, and mature interactions in software organizations.
+\end{abstract}
+
+%% This generates a "dedication" section, if needed.
+%% (uncomment to have it appear in the document)
+%\begin{dedication}
+%% ***   Put your Dedication here.   ***
+%\end{dedication}
+
+%% The `dedication' and `acknowledgements' sections do not create new
+%% pages so if you want the two sections to appear on separate pages,
+%% you should put an explicit \newpage between them.
+
+\begin{acknowledgements}
+
+I am deeply grateful to Steve Easterbrook for giving me the confidence to explore my research interests and the guidance to avoid getting lost in my exploration. Steve was a fabulous advisor: sharp, cheery, perceptive, and mindful of the things that truly matter.
+
+Greg Wilson's selfless perseverance and attention to my work consistently found pearls among my heaps of data, and he threw enough research questions my way to keep me busy the rest of my life. Furthermore, without Greg's assistance I could never have had so many organizations willingly opening their doors to me. Bonnie Ericksson, Khai Truong, and Eric Yu gave me great advice and a welcome diversity of perspectives. Jim Herbsleb graciously agreed to be my external examiner, and his feedback in the final stages of my degree was invaluable. Dana Damian, Peggy Storey, Janice Singer, and Marsha Chechik also supported me at several points throughout my studies.
+
+My colleagues at the lab ensured I was constantly engaged and entertained along the way. In particular, I can't thank Jon Pipitone's exceptional friendship enough. Among many other things, Jon gave me thoughtful and detailed feedback on this thesis, a careful and patient ear, gentle help in finding my balance, and an appreciation for a life well lived. Mehrdad Sabetzadeh, Nan Niu, Rick Salay, and Anya Tafliovich were also frank, warm, and open in their advice. Jono Lung was always caring, hilarious, and full of surprises. Neil Ernst, Jennifer Horkoff, and Markus Strohmaier were insightful research partners. I thank all of them, and Yoni Amir, Jeremy Handcock, Alecia Fowler, Abayomi King, Alicia Grubb, Michalis Famelis, Sotirios Liaskos, Jason Montojo, Carolyn MacLeod, Golnaz Elahi, Jocelyn Simmonds, and Hesam Chiniforooshan for their encouragement and friendship.
+
+I am very grateful to Gina Venolia for mentoring me at Microsoft Research, and to Rob deLine, Andy Begel, Medha Umarji, Libby Hemphill, and Paula Bach for their lively discussions and constructive feedback. I am indebted to Marin Litoiu and Ramzan Khuwaja for their assistance and collaboration during my time at IBM's Center for Advanced Studies. I would also like to acknowledge the hundreds of participants who obligingly and patiently gave me their time in all of my case studies.
+
+Outside of the lab, plenty of people kept me sane and happy in Toronto. Among many others, I thank Manuel Berlanga, Juan Manuel Gonz\'{a}lez, Laura Aguilar, Erick Mart\'{i}nez, Fernanda Rojas, John Martin, Viviana Varela, Alex S\'{a}nchez, and Lenka Branichova, as well as Gadi Naot, Jackie Cheung, and everybody at the Hart House Boardgaming Group, and the folks at the Hot Yam for the delicious meals. From my lap, Mushi the Cat closely supervised the writing of many paragraphs of this thesis. From afar, Tajbilab Charnichart, Sa\'{u}l L\'{o}pez, Hugo Charles, Lalo V\'{a}zquez Vela, and Pancho Guti\'{e}rrez supported me through every step of the way.
+
+Despite the geographical distance, my family was always nearby. My father made sure I felt his confidence and encouragement, and his advice was consistently timely and useful. Pam decided to visit on a whim, and as a result she was responsible for my best Summer in Toronto, while Leo and Joey were repeatedly wonderful hosts in New York. My mother, though no longer with us, remains the compass of my life.
+
+Five and a half years ago, Val and I decided that I would enroll in the Ph.D.\ program, and throughout this time I always knew this project belonged to us both. My shadow and my light, she encouraged, supported, understood, and loved me at every moment, and I am intellectually indebted to her ideas and our conversations. None of this could have happened without Val. This thesis is dedicated to her.
+
+\end{acknowledgements}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\end{preliminary}
+
+\hyphenpenalty 1000
+
+\include{introduction}
+\include{related-sw}
+\include{related-ext}
+\include{methods-evidence}
+\include{shared-und}
+\include{discussion}
+\include{conclusion}
+
+\bibliographystyle{authordate1}
+\bibliography{biblio}
+
+\appendix
+\include{re-wild}
+\include{conway-scientific}
+\include{ibm}
+\include{microsoft}
+\include{contrast}
+
+\end{document}

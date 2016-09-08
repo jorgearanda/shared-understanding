@@ -1,0 +1,244 @@
+\chapter{Details of the Small Firms study}
+\label{app:SmallFirms}
+
+A significant portion of the data and findings from the \emph{Small Firms} study was published in the proceedings of the 2007 International Requirements Engineering Conference \cite{Aranda2007}. The study itself is summarized in section \ref{sec:SmallFirmsStudy}; the present appendix offers more details on the study and its findings based on the contents of the published paper.
+
+\section{Motivation}
+
+We performed this study in response to anecdotal evidence that requirements engineering ``in the wild'' differs significantly from the practices prescribed in the literature. We had observed that small software
+companies seem to manage their requirements in ways that bear no relation to what the textbooks say, and
+what is taught in undergraduate courses. Furthermore, much of the current research (e.g.\ on requirements
+modeling, specifications, traceability, etc.) seemed to be irrelevant to these companies.
+
+In order to study this apparent mismatch, we designed a case study of small companies that would provide insights on the following questions:
+
+\begin{itemize}
+\item How do small companies manage their requirements? In particular, how do they elicit, document, communicate, and track them?
+
+\item How does the context of these companies affect them? Which forces shape their requirements management processes?
+
+\item Why do these companies adopt some requirements practices and reject others? Could lack of adoption be a problem of diffusion, education, or mismatching goals and expectations?
+\end{itemize}
+
+
+\section{Design and execution}
+\label{sec:SmallFirmsDesign}
+
+Our research questions called for a qualitative field study of small software companies. We applied a multiple-case exploratory case study methodology. The intention of an exploratory case study is to gather data with the aim of deriving specific hypotheses for further study. We established criteria for the inclusion of companies to our study, and interviewed key people at all of them. When possible, we visited their office space and examined their documentation and tools. We captured contextual details data, such as office layout and team member demographics and background. We inquired about the requirements processes of each company, and about the place of these processes within their larger project lifecycles.
+
+Our unit of analysis was the software company as a whole, rather than individual projects or teams within them. This choice allowed us to focus on how requirements practices are affected by the culture, business context, and organizational structure of these companies. Note that a software team is only part of a company. We have not attempted to examine small teams within large corporations for this study.
+
+The study had a purposeful case sampling. Our inclusion criteria were the following:
+
+\begin{itemize}
+\item The company does software development as a primary activity.
+
+\item The company is small. To simplify selection, we chose an arbitrary threshold of companies with less than 50 employees.
+
+\item The company has been in operation for at least one year, which allows for some settling of its requirements practices.
+
+\item For convenience, the company must have offices in Toronto or its metropolitan area. In recent years, Toronto has experienced a considerable development of its software industry. Many firms have formed an active hi-tech community with frequent gatherings and a high degree of openness. Greg Wilson is a well-known participant of this community, and this greatly facilitated the tasks of obtaining access to our cases and of reaching a healthy level of trust for our interviewees to disclose their strengths and problems.
+\end{itemize}
+
+The set of cases in our study was extremely diverse. This was not intentional, and it was not part of our selection criteria; rather it appears to reflect the diversity of the software industry in the Toronto area. We did not reject opportunities to include cases in our study due to similarities to other cases in our pool.
+
+In our initial contact with each candidate company, we explained that this was a case study of how small software companies manage their projects. Our contacts were generally partners or owners of their corresponding companies; when this was not the case, they were persons holding another leadership position in their organization. We initially made contact with fourteen companies, and have conducted interviews with twelve of them. When possible, these meetings took place in each company’s offices; otherwise we met in neutral environments. Interviews typically lasted between one and two hours, and we held from one to three meetings with each company.
+
+Although the interviews had an open structure, we collected information about the following issues: organizational structure, company size, roles of key staff, line of work, types of customers, descriptions of the analysis, sales, negotiation, and development processes, communication of requirements to the rest of the team, documentation, tool support, requirements errors, and misunderstandings between the company and its customers.
+
+
+\section{Description of the cases}
+
+The following is a brief description of each of our cases. We used pseudonyms for the companies, to protect their anonymity. A summary of the cases appears in table \ref{tab:SmallFirmsDescrip}, while table \ref{tab:SmallFirmsDetails} presents more details of every case.
+
+\textbf{Endosymbiotic} is a small open source company that specializes in applications for the health business. It currently employs seven people, including its two founders. Its main customer, a general hospital, grants them the use of office space in its own grounds and interacts closely with them for requirements elicitation. This arrangement is highly valued by the partners, since it allows for frequent interactions with their users, paying customers, and costly medical devices.
+
+Endosymbiotic's projects grow incrementally, and although they have an abstract set of goals, they have not been articulated in detail, since they shift depending on new technical requirements, regulations, and the strategic vision of the hospital's management.
+
+Requirements come from three main sources: standards, domain experts, and past experiences. It should be noted that everybody in the team worked for another company in the same business before starting Endosymbiotic. In a way, they are re-building a system that they had previously developed, and they understand many of its requirements and challenges.
+
+The company loosely applies the Scrum \cite{Schwaber2001} approach to communicate requirements to the team and assess progress: first, each project has a ``product backlog'' (a list of pending features, described with little detail) that acts as a sort of requirements document. Second, the team holds a ``daily Scrum'', a 15 minutes long, standing-up meeting, in which each team member reports on their current progress and plans. Third, a monthly demo gives visibility of the projects' status to everyone in the team and to hospital representatives, and allows for a prioritization of the features in the backlog.
+
+Endosymbiotic's employees do not usually communicate requirements information through documentation. They use face-to-face interactions as their main means of communication. When they model their system designs, they tend to do so informally in whiteboards, without regard for proper notation syntax. Their drawings are usually photographed and posted in a website accessible to the full team.
+
+Most people in Endosymbiotic have been working together for several years. They know one another's skill sets, and are familiarized with their loose agile methodology, which they decided to adopt as a group. Experiments in bringing new people to their team have not been successful – recently, for instance, a new employee from a different environment left the company two weeks after joining.
+
+
+\textbf{Agilista} follows extreme programming \cite{Beck2005} closely, in both letter and spirit. It is a small software house formed by four people, all with an engineering background, and most of them with experience working in far larger corporations. It provides software consulting and development, mainly in the industrial automation area. Its projects and customer relations are long-term (projects often last over 2 years), and the company works on 2-3 projects at a time. Agilista is enthusiastic about its methodology and programming language of choice (Python), and rejects projects that do not fit with these choices.
+
+Agilista's projects have no official end date or quote. The company gets paid as they go along, until the customer decides to stop the project. They do not write requirements documents. Instead, they produce a list of “stories”, which can be a sentence long, and in which planning and effort estimation are based.
+
+In the only noticeable divergence between Agilista's processes and XP, a senior consultant from the company (usually its principal) acts as the customer on-site for the rest of the team, after having interviewed people at the customer's site and acquired some domain expertise.
+
+The company explores the requirements of their projects with throwaway prototypes that are ready at the end of the first iteration of the project (two weeks after kick-off). Agilista's principal admits that the company is happy to discard the results of this first iteration as long as it teaches them something about their project.
+
+The list of user stories is modified and re-prioritized after each iteration, between the customer and the team members. The vague phrasing of some of the stories of a project is often clarified for the developers by the consultant acting as customer proxy, who in turn contacts the customer whenever needed. It is through these informal exchanges that requirements are communicated to the team. Furthermore, Agilista's open space layout fosters plenty of quick interactions among its employees, leading to a greater shared understanding of their status and projects.
+
+
+\textbf{Spark}'s offices, with their wide, open spaces, quirky gadgets, toys, and open kitchen, suit the image of a creative agency more than of a software company. However, their offerings are highly specialized and algorithmically complex products and web services for news corporations and publishers.
+
+Spark currently employs 19 people, with 11 of them involved in software development. Due to the complexity of its code, it requires that several of its programmers have a graduate Computer Science degree.
+
+The firm does not have a structured requirements management process. Feature requests are rarely documented. To define the requirements of their next release, the company's partners meet face to face with potential customers to find out their underlying needs in a sales/negotiation process that sometimes extends for a full year.
+
+From these meetings and the consideration of Spark's own long term strategic goals, a small team at the company gives shape to the vision and features for the next release. The result of this process is not documented either. Rather, it is communicated verbally to the development team, which will make loose effort estimates based on this information.
+
+The only routine practice the team follows is a daily standing-up status meeting, which lasts for 15 minutes, at the end of the day. Other than that, Spark's strategy may be described as follows: hire competent, creative, smart people; let them know what we want to do, and let them figure out how to do it themselves.
+
+Spark's office space and the traits of its members suggest that the company has developed a personality that would probably reject any attempt to become structured. When we pointed out to one of the partners that this admittedly informal (if currently successful) approach might lead to trouble as his company grows, he responded that for them growth does not have a high priority: ``we're not going to become an IBM.''
+
+
+\textbf{Bespoker} is a 40-45 person software company that develops tailored enterprise applications for banks, insurance companies, and other large corporations. Of all the companies we studied, this was the one that most closely resembled typical views in the requirements literature of how requirements engineering should be done.
+
+The partners at Bespoker appear to be convinced of the need of upfront analysis work before coding, and of the strengths of writing things down (for them, sharing knowledge is ``a matter of documentation''). Broadly, their process is similar to the Rational Unified Process (RUP) \cite{Kruchten2003}, and it works as follows:
+
+Projects start with a paid discovery phase. For small projects (4-6 months), this phase lasts a few weeks; for larger projects (up to 2 years), it may extend to 3-4 months. During this phase, one to three team leaders from the firm meet frequently with their customers to write a detailed specification, where every screen and business rule is described. This was the only company in our study that uses UML diagrams (use cases, class and sequence diagrams, statecharts) to some extent to document their specifications. For large projects, the specification consists of hundreds of pages of screens, business rules catalogues, and models.
+
+Bespoker's partners claim that this process allows them to understand their projects clearly, and to estimate them within 10\% of their actual performance.
+
+These documents are reviewed at two levels by the customer (a business and a technical sign-off), a standard practice for contracts with corporations of the kind that the company deals with. After the sign-offs, the iterative development phase begins. To communicate the project's requirements to the team (which could be of 8-18 people), the team leaders produce a developer handbook that explains the specification and is available to the full team in a wiki for easy modification.
+
+These documents do not deal with software design. The company does not want to have detailed design documents, claiming that ``80\% of the benefit of design documentation is at the high level,'' and that at a lower level they have not found anything as efficient as simply writing code.
+
+
+\textbf{PhoneOffshore} is a provider of applications for mobile services with millions of subscribers, and its clients are large telecommunication corporations. The firm has between 20 and 25 employees distributed between their headquarters at Toronto and an offshore development office. Each of the company's projects takes around 6 months for 5 people – since, according to the CEO, ``less than that is boring and unprofitable, and more than that won't scale.''
+
+For PhoneOffshore, the requirements process is tightly woven with the negotiation process (``sometimes they tell us what they want, sometimes we decide''), and is largely performed to protect the company legally and to satisfy the expectations of its customers. During this stage, PhoneOffshore maintains two persons as liaisons to the customer: one technical, and one business relations. The technical liaison, who is also the project leader, talks to several groups of stakeholders to find their needs and to negotiate the requirements of the system. Some of the documents produced at this stage are legally binding, and negotiating them with the customer may take about a year for large projects. Even after the documents are signed off, the company admits that ``requirements are never nailed down.'' In some cases, negotiating what the contract meant is a full-time job.
+
+The project leader is also in charge of communicating the requirements to the team. He produces specifications of modules as needed, and a project plan to be used mainly as a reference by the developers. These project plans are not comprehensive, and whenever a developer picks up a work unit, he will contact the project lead to find out its implementation details. These discussions occur through email, instant messaging, and phone between the headquarters and the offshore office. The two offices do not have a considerable time zone difference, and communication usually occurs during business hours.
+
+All of PhoneOffshore's projects are built upon a homegrown framework for mobile applications. This framework neatly modularizes every project's architecture, and the company sees it as one of its main strengths. In parallel to their normal operation, a small and trusted group at the company continues to improve its framework for the benefit of all of its projects.
+
+
+\textbf{Growing Web} is a 5-person web development and consulting start-up that focuses on content management applications. They serve a wide variety of customers, and though on occasions they develop longterm projects, they also take very small projects that they can complete in as little as four hours. This variation causes the company to have a flexible approach to process. For small projects, it is very loose. The company's owner talks to the prospect, quickly reaches an agreement, and informs his company's office manager. She, in turn, schedules the task and passes the relevant information to a developer in an email or a bug report. There are no other requirements documents produced for these projects.
+
+For larger projects, the company follows a process resembling a waterfall model. In the sales process (the
+company sees this as sales, rather than requirements analysis), the owner talks to a potential customer for about an hour, and creates a rough estimate of the project's tasks and effort. This process is not paid by the customer, and it is usually done quickly. Their business model depends on the owner producing cost estimates efficiently: if they refused to work this way they could lose the project to a more flexible company.
+
+If the prospect accepts the estimate, either the company's owner or the developer in charge of the project writes an Architecture and Design document, which is concerned essentially with the project's requirements and is read by the developers, the office manager, and the customers.
+
+Once the document has been approved by the customer, the development phase begins. The requirements of the project are communicated to the team in a kick-off meeting, in which the owner discusses the client's needs and the list of features required. Later, when development has started, informal exchanges at their open space facilitate the clarification of requirements.
+
+Although every project that Growing Web takes is different, most of them fall in the same domain, and the company uses its past experiences and tools to build it. In particular, almost all of their projects use a
+homegrown framework for web content management. In a way, the company works on the same ``product'' at all times, adjusting it to satisfy the needs of their current customers. When they stray from their main
+domain they have a steeper learning curve to go through, and riskier projects. The framework seems to have been completely assimilated in the team's heads: whenever a client mentions that they want a website
+with a particular feature, the team translates that into terms that their framework handles, and even educate their clients to use the same terms.
+
+
+\textbf{Rentcraft} is a 25-people provider of rental management systems. Their team works on releases that take from 9 months to a year. It has two visible leads: a product manager, who acts as the customer liaison for the team, and a project leader, who coordinates progress.
+
+For each release, their list of requirements considers buying criteria (features that customers want to see), usage criteria (features that customers take as default), and strategic criteria (features that allow the company to evolve the product in a direction they believe will be profitable). Initially, the list of requirements is about twice as long as what the team will be able to produce for the next release. Nevertheless, the list is passed on to the developers, who write an ``Analysis and Estimation'' (A\&E) document, in which they informally discuss implementation alternatives for complex requirements, identify relevant uncertainties, and estimate the effort required for each feature.
+
+When the A\&E document is ready, the product manager and the project leader jointly choose the features that will be implemented in the next release, selecting only as many as it is feasible to implement given their resources. The result of this process is the ``product requirements document'' for the release.
+
+For a company that sells products, such as Rentcraft, the requirements have a different emphasis than for companies that provide bespoke services. According to their product manager, ``the worst thing that can happen to us is not that nobody buys our software, but that one customer buys it,'' which would force the company to provide maintenance for it. For this reason, validation of the release's requirements is essential, and the product manager requests feedback from clients through beta tests and meetings.
+
+The product manager/project leader duo at Rentcraft has been working together for a long time, through several companies, and they have refined their interactions and their processes considerably. It is easy for them to know what to expect from each other. To a high degree, this same team awareness extends to most of their senior developers. For a brief period, the company had another product manager, with different processes and expectations, and he was rejected by the team. Soon afterwards, they rejoined with their old product manager, and the process to which the team was used was reinstated in full.
+
+
+\section{Results and observations}
+
+From the analysis of the data from this case study, we identified four major findings. In each case, we use the findings to formulate specific hypotheses for further investigation. These hypotheses are summarized in table \ref{tab:SmallFirmsHyps}. I discuss each of them in turn now.
+
+All the companies included in this study have requirements practices that work for them. They earn enough revenue to stay in business, and in most cases, to grow. Each has survived for a number of years in the risky world of software start-ups. These companies are led by innovative, intelligent people, who are generally knowledgeable about advanced software engineering concepts and have many years experience in the software industry.
+
+\subsection{Everyone does requirements engineering differently}
+\label{sec:Adaptation}
+
+When we look for common features of their requirements processes that might account for the success of these companies, we find that they all handle their requirements very differently. The diversity is striking. Each addresses the issues of elicitation and communication of requirements with different degrees of planning, structure, and documentation; and yet each considers that their choices are natural.
+
+Several variables appear to affect the requirements practices of these companies: the type of customers, the background and skills of their developers, the preferences of their founders, the nature of their business environment, the spatial layout and geographical distance of their offices, and their number of employees. We found evidence of each of these factors at play in at least some companies. However, we do not yet have sufficient evidence about the strength of influence of each factor in the various cases. 
+
+\begin{quote}
+\emph{\textbf{Hypothesis:} The diversity of RE practices in small companies can be explained as the result of evolutionary adaptation, as these companies have adapted to a specific niche.}
+\end{quote}
+
+According to this hypothesis, we can view the software industry as an eco-system. It would appear that, over time, differentiation occurs when companies adapt their requirement strategies to fit a particular ecological niche. Natural selection reinforces this process if companies survive in a competitive environment by being better adapted to a particular niche than others.
+
+The implications of this hypothesis for requirements engineering research are interesting. If the hypothesis is correct, no generalized requirements technique will be suitable for all small companies. The value of any novel requirements technique will vary significantly depending on the context of the company. Ideas from RE research will not successfully transfer to small companies unless they are tailored to the particular context of the company. Just as a requirements analyst must understand the specific needs of her customers, the RE researcher must understand the varied needs of software companies: context is essence.
+
+Further work is needed to test this hypothesis, and if it is correct, to investigate the forces that shape the evolution. It is still unclear whether it is the software company that specializes to a niche, or the niche that adapts to the company, or both. For example, companies may select requirements practices that suit their customers, or the customers may choose whom to work with based on how competing companies approach the requirements process. Our initial data indicates some support for both of these accounts.
+
+Just because they are adapted doesn't mean there is no room for improvement. While each of the companies we studied has a requirements process that works well enough currently, these may not be robust enough to survive as the company grows, or as the business environment itself evolves.
+
+\subsection{Cultural Cohesion}
+\label{sec:CulCohesion}
+
+A second striking observation about the companies we studied is the high degree of cultural cohesion they exhibit. In almost all cases, social characteristics shared by the group enabled it to simplify the tasks of requirements communication and coordination. Specifically, we observed cultural cohesion occurring in the following forms:
+
+\textbf{Homophily.} A phenomenon that manifests as homogeneity in a social network, caused by a natural
+attraction of its members to similar individuals \cite{McPherson2001}. We found several instances of homophily in our cases (Agilista's shared engineering and professional background and PhoneOffshore's prevalence of employees of the same minority, among others). This homogeneity may increase the efficiency and reliability of communication, and make it easier to develop a shared understanding of the requirements.
+
+\textbf{Long term collaborations.} In several cases, a notable characteristic was the long term collaboration between several of a company's members across firms. These relationships (e.g.\ Rentcraft's product manager / project leader duo, Endosymbiotic's full team forking from a different company, Bespoker's partners collaboration through almost two decades) enables a deeper understanding of the work style of one's colleagues, and a better estimation of their capabilities.
+
+\textbf{Rejection of radical change.} For many of these companies, their current requirements practices were negotiated, agreed, and settled in the past. Newcomers that intend to change processes significantly, or that do not accept established practices, have on occasion been received with hostility and did not last long.
+
+These phenomena lead us to suggest the following competing hypothesis to explain the diversity in the requirements processes of the companies in our study:
+
+\begin{quote}
+\emph{\textbf{Hypothesis:} The choice of RE practices is irrelevant for small companies with strong cultural cohesion, as the efficiency of team dynamics overrides any benefits based on process.}
+\end{quote}
+
+If this hypothesis is correct, it implies that the real goal of RE research should not be the creation of requirements techniques, but the study of the means through which teams acquire a shared understanding efficiently. Teams that have achieved strong cohesion do not need new requirements techniques because they have no problems achieving a shared understanding of the requirements. On the other hand, a team that lacks this cohesion might be able to overcome the problem through processes and documentation.
+
+This hypothesis offers an alternative explanation of the diversity of RE practices than the evolutionary account given in the previous section. If culturally cohesive teams can succeed with arbitrary requirements practices, then adaptation to a business niche is no longer needed to explain the diversity we observed. The diversity occurs because, for these companies, anything works.
+
+\subsection{The CEO is the requirements engineer}
+
+For small company owners, requirements processes may well be one of the firm's most important activities: they rarely give away the role of requirements analyst to their employees. In four of our seven cases, a founder or the CEO of the firm does the requirements engineering. In the other three cases, a trusted senior figure in the company (a project leader or a product manager) takes these responsibilities.
+
+We offer two complementary explanations for this phenomenon:
+
+\begin{quote}
+\emph{\textbf{Hypothesis 1:} The skillset needed for successful requirements engineering is a subset of the skillset for successful entrepreneurship.}
+\end{quote}
+
+In most of our cases the companies do not distinguish between the role of a ``requirements engineer'' and that of a ``customer liaison.'' The person eliciting requirements is usually the face of the company, and all communications are channelled through this role. The requirements engineer, then, is often also the company's salesperson and contract negotiator, and needs skills matching these roles.
+
+\begin{quote}
+\emph{\textbf{Hypothesis 2:} Requirements engineering and business strategy are inseparable for small companies.}
+\end{quote}
+
+For a small company to commit to the development of a project implies locking a proportionally large amount of its available resources. Therefore, requirements work is also strategic management work: the decision of which projects to take or which features to include in the next release of a product is a strategic decision: it will define the company, enable it to exploit its strengths, or lead it through the risk of chartering unknown territory.
+
+These explanations have important implications for our field, which has on occasion attempted to abstract the requirements process away from sales and strategic considerations. If this disconnect remains, it will be unlikely that owners of small companies find our proposed requirements practices applicable to their situations.
+
+\subsection{Requirements errors are not catastrophes}
+
+Every company that we talked to had stories to share about requirements errors that compromised some of their projects, and they were all aware of the importance of getting their requirements right. And yet, nobody recalled any catastrophes caused by these requirements errors.
+
+This absence of requirements catastrophes contrasts sharply with the commonly accepted perception of a “software crisis”, especially one largely caused by requirements problems. We discuss several possible explanations for this disagreement below.
+
+\begin{quote}
+\emph{\textbf{Hypothesis 1:} Small companies that survive their initial phase practice normal design, which greatly decreases the risks associated with requirements engineering.}
+\end{quote}
+
+As we have discussed, these companies are well established, and appear to have adapted to their business niches. An important part of this adaptation may have been a shift from a radical design to a normal design \cite{Vincenti1993} approach to software development. Each company's specialization allows for the
+exploitation of skills and knowledge acquired previously, which could decrease the risk of software failures dramatically.
+
+\begin{quote}
+\emph{\textbf{Hypothesis 2:} Small companies can fix their requirements problems more easily than large companies by virtue of being small.}
+\end{quote}
+
+The scale at which small companies work reduces significantly the size of their projects and their coordination and communication challenges, in comparison to the large corporations which are often the subject of requirements engineering research. In small projects, it is easier to arrange for meetings with every participant and clear misunderstandings. Sharing a (sometimes open) office space also enables valuable information exchanges.
+
+\begin{quote}
+\emph{\textbf{Hypothesis 3:} A single requirements catastrophe will drive a small company out of business.}
+\end{quote}
+
+It is possible that we did not observe companies that have experienced significant requirements problems because such companies go bankrupt and disappear before we can study them. Perhaps the most important indicator that requirements errors are not perceived as catastrophic is that they do not prompt these companies to take decisive actions to change their requirements processes. Owners recognize their issues with requirements work, but prefer to take the hits and maintain the processes that have enabled their survival so far, rather than to revolutionize their methods and risk failure.
+
+Our evidence suggests that these companies have each arrived at a different configuration of requirements practices that is ``good enough'' for their contexts, and that revolutionizing their processes is risky, costly, and unpleasant, in comparison to the alternative of maintaining the inertia that has been profitable to this point. If this observation is correct, it means that small companies will never adopt requirements techniques that demand radical change.
+
+
+\section{Threats to validity}
+
+\textbf{Construct Validity.} Our main constructs are the concepts of ``small software company'' and ``requirements management process.'' Regarding the first, we arbitrarily defined small companies as those with less than 50 employees. This limit is artificial, and might obscure the distinctions between a four-person and a forty-person company. Future studies will probe these differences; for now the limit allows us to explore the characteristics of that underrepresented 95\% of companies in the industry.
+
+As for the second construct, our study of requirements management processes was intentionally broad. We studied the processes through which knowledge about a project flows among its stakeholders, and therefore our construct overlaps with activities usually referred to as project management, business administration, sales, and negotiation. Although this implies a lack of precision when describing requirements processes, it enables us to investigate these processes in their natural contexts.
+
+\textbf{Internal Validity.} Our major source of data for this study was the series of interviews we conducted with people at each firm. In most cases, visits to the participants' offices allowed us to corroborate some interview data. However, our reliance on interviews meant that we needed to trust each participant's description of their own processes. Participants may have omitted important facts, or we may have misinterpreted them. Observational field studies will help to uncover these problems, and we will carry them out in the short term as our case study progresses.
+
+\textbf{External Validity.} All of our cases were firms headquartered in Toronto, and this might have generated geographical biases. We do not know if our findings apply to software firms around the world---and given that contextual factors seem to shape companies, the software industry of other cities might exhibit different characteristics. These differences, however, should not change the key insights from our study significantly.
+
+\textbf{Reliability.} We expect that replications of our study should offer results similar to ours. Of course, the characteristics of each company under study will differ from our reports, but the underlying trends and implications should remain unchanged.

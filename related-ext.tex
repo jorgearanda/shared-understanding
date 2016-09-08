@@ -1,0 +1,96 @@
+\chapter{Organizational and Sociological Considerations}
+
+This chapter addresses relevant literature from fields beyond software research. In particular, it discusses commonly accepted conceptualizations of organizations, sociological work on group cohesion, organizational inertia, organizational forms and ecology, and pointers to studies on the impact of size and growth on organizational performance.
+
+\section{Perspectives on Organizations}
+
+Since this thesis deals with phenomena occurring in software organizations, it is useful to explore how organizational scientists conceive of and study organizations. As it turns out, there is no consensus on the organizational construct, but rather, several perspectives to understand it. In a comprehensive overview of Organizational Science, Scott and Davis \shortcite{Scott2007} argue that most of its seminal research can be classified according to three perspectives, each of them addressing the construct of ``organization'' in a different way:
+
+\begin{itemize}
+\item \textbf{Organizations as Rational Systems.} Organizations are collectivities oriented to the pursuit of relatively specific goals and exhibiting relatively highly formalized social structures.
+
+\item \textbf{Organizations as Natural Systems.} Organizations are collectivities whose participants are pursuing multiple interests, both disparate and common, but who recognize the value of perpetuating the organization as an important resource.
+
+\item \textbf{Organizations as Open Systems.} Organizations are congeries\footnote{Agglomerations or collections.} of interdependent flows and activities linking shifting coalitions of participants embedded in wider material-resource and institutional environments.
+\end{itemize}
+
+The rational systems perspective is the most mechanistic of the three. The organization has a set of determined and shared goals and, through internal formalization, strives to achieve them as efficiently as possible. The organization's structure consists of manipulable parts, and each of them can be modified, independently of the rest, to make the whole more efficient. This formalization of structure means that one can and should abstract individual characteristics away as much as possible: by simplifying and routinizing procedures, the organization eliminates the need for talent. It is a perspective central to Scientific Management, also known as Taylorism:
+
+\begin{quote}
+\emph{No great man can (...) hope to compete with a number of ordinary men who have been properly organized so as to efficiently cooperate. In the past the man has been first, in the future the system must be first.} \cite{Taylor1947}
+\end{quote}
+
+The natural systems perspective emerged in response to the inadequacies of the rational systems perspective. Researchers pointed out that social conduct is often irrational, which throws a wrench in the rational systems' machine. They also noted that the stated goals of organizations are frequently different than its real goals, and that the real goals are far more numerous. And they argued that in many cases preserving the organization becomes an end in itself, irrespective of the purported goals of the organization. Scott and Davis explain the position that results from this rejection of rational organization:
+
+\begin{quote}
+\emph{For the mechanistic model of structure employed in the rational system perspective, the natural system substitutes an organic model. Rational systems are designed, but natural systems evolve; the former develop by conscious design, the latter by natural growth; rational systems are characterized by calculation, natural systems by spontaneity.}
+\end{quote}
+
+While the rational and natural system perspectives are in clear opposition, the open system perspective can be seen as a complementary evolution over more simplistic conceptualizations. The open system perspective studies organizations within their larger contexts; it recognizes that organizations not only interact with their environment, but that this interaction is essential for the viability of the system. Context is essential. Organizing occurs as a sensemaking process, as Scott and Davis explain:
+
+\begin{quote}
+\emph{Participants selectively attend to their environments and then, in interaction, make collective sense of what is happening. ``Making sense'' entails not only developing a common interpretation or set of common meanings, but also developing one or more agreed-upon responses that are selected from among the many possibilities. Among responses that are selected, some are more useful and robust than others and it is these which are retained in the form of rules or routines. In this manner communal sense making gives rise to a repertory of repeated routines and patterns of interaction - which constitute the process of organizing.}
+\end{quote}
+
+The emphasis on the environment of the open system perspective provides an explanation for the variable need for formalization and hierarchy in organizations---a phenomenon that is mostly unexplained by the rational and the natural system perspectives. In homogeneous and stable environments, agreed-upon responses are well established, and formalization and hierarchy will become prevalent. In changing, diverse environments, formalization hinders the process of finding effective solutions, and therefore the more organic form prevails.
+
+Scott and Davis analyze more recent developments in organizational science as a cross-fertilization of perspectives. Most current theories have reached a level of sophistication that does not allow for an easy classification in these categories, but are influenced by several aspects of them; so that we now have some rational-open theories and some natural-open theories.
+
+
+\section{Group Cohesion and Transactive Memory}
+\label{sec:Cohesion}
+\label{sec:Transactive}
+\label{sec:WorkPatterns}
+
+One of the earliest references to the phenomenon of cohesion and its effects is Festinger's \shortcite{Festinger1950} work on informal social communication. He provides a definition for cohesiveness (``the resultant of all the forces acting on the members to remain in the group''), and he describes what are these forces of group attraction (interpersonal attraction, task commitment, and group pride), but he does not offer much beyond this.
+
+Beal \emph{et al.}\ \shortcite{Beal2003} provide a good and relatively recent literature review on the concept, and specifically on whether cohesion is correlated with performance. There are several theoretical reasons for this correlation; two important ones are that cohesive groups are better motivated to perform and better able to coordinate due to their shared experiences. Beal \emph{et al.}\ point out that there are many studies on cohesion and performance and that previous meta-analyses have failed to produce any solid finding, partly due to a lack of clarity of the constructs under study. After clarifying the constructs, Beal \emph{et al.}\ show a strong correlation between cohesion and performance, under some conditions.\footnote{The result holds when considering studies that measure cohesion at the group rather than at the individual level, when performance is measured based on the behaviour of the group rather than the outcome of its activity, when considering the outputs produced given the inputs (instead of the outputs on their own), and when the team workflow is complex enough (see following discussion).}
+
+Of particular importance for a discussion of cohesion in software practice is an appreciation of the complexity of the work that teams need to execute. Beal \emph{et al.}\ use a taxonomy of patterns of team work from Tesluk \emph{et al.}\ \shortcite{Tesluk1997}, who in turn adapted from Thompson \shortcite{Thompson1967}, that is worth reproducing here:
+
+\begin{itemize}
+\item \textbf{Pooled workflow.} Involves tasks that aggregate individual performances to the group level. No interactions or exchanges between group members are required in this pattern.
+
+\item \textbf{Sequential workflow.} Describes tasks that move from one member of the team to another but not in a back-and-forth manner.
+
+\item \textbf{Reciprocal workflow.} Similar to sequential workflow in that work flows only from one member to another, but the flow is now bidirectional.
+
+\item \textbf{Intensive workflow.} Work has the opportunity to flow between all members of the group, and the entire group must collaborate to accomplish the task.
+\end{itemize}
+
+The argument is that as one progresses in this taxonomy cohesion becomes increasingly important for performance. It is a useful taxonomy to have in mind for software practice, as different software processes and practices require different levels of workflow, and as a result they would be more or less affected by the cohesion of the group.
+
+Studies on ``transactive memory systems'' are also relevant for this thesis. Several researchers, notably Wegner \emph{et al.}\ \shortcite{Wegner1991} and Hollingshead \shortcite{Hollingshead1998,Hollingshead2000}, have found that people in close interpersonal relationships (professional or informal) distribute their cognitive labour of encoding, storing, and retrieving information from different domains. This relationship is called a transactive memory system. In this way, one member of the transactive memory system becomes the ``expert'' at one domain, and another member specializes on a different domain. When the people in the transactive memory system face a task related to one of the domains, they know who is supposed to work on it; when they face new information, they know who should pay attention to it. The effect is a greater efficiency of the people involved; their system is advantageous for all of them. As Wegner \emph{et al.}\ write, quoting Samuel Johnson, \emph{``knowledge is of two kinds: we know a subject ourselves, or we know where we can find information upon it.''}
+
+
+\section{Organizational Inertia, Form and Ecology}
+
+Purportedly, the most important goal of software research is to improve the practice and performance of software development organizations. Therefore, an elemental question for our field is whether organizations \emph{can} change significantly in the first place.
+
+Instinctively software researchers seem to believe that organizations can change, even radically and at a whim, to the point that a project manager, for instance, can pick the software process that her team will use for their next project and, with little work, the team will re-configure and adapt to its new demands. But the feasibility of such modifications is a contentious point in the organizational science literature, and the implications of the debate are important for our field.
+
+The argument against the possibility of serious organizational change is based on the concepts of inertia and structural imprinting. Stinchcombe \shortcite{Stinchcombe1965} argues that organizations are constrained by the conditions present in the environment at the time of their founding, and that history shows that there are ``great spurts of foundation of organizations'' of essentially the same form, followed by stagnation. If new spurts arise, they are ``generally of a fundamentally different kind of organization in the same field.''
+
+Organizational ``cohorts,'' then, arise at roughly the same time and exhibit similar social structures. More importantly, these organizations are then imprinted with their initial structure; due to organizational inertia, they will probably retain their structural features throughout their lifetime.
+
+Hannan and Freeman \shortcite{Hannan1989} have taken this analysis further to claim that one can apply evolutionary strategies to the study of organizational forms. At certain periods a particular form of organization arises and becomes prevalent; when the environment changes significantly its fitness will decrease, the mortality of its members will increase, and a different organizational form (a different species) will arise to take its place. Notably, again, old organizations are bound to their initial structure and will not be able to make the transition to the new organizational form. They put the discussion in evolutionary terms:
+
+\begin{quote}
+\emph{Most organizational theorists assume that change is Lamarckian, that major changes in the forms of organizations come about through learning and imitation. Many kinds of organizations commit resources to learning; organizations often seek to copy the forms of their most successful competitors. In a rough sense, organizations make copies of themselves either by setting up new organizations, by losing or expelling personnel with the requisite knowledge to copy the form, or by invoking imitation. (...) The line of theory we develop builds on the assumption that change in core features of organizational populations is more Darwinian than Lamarckian. It argues that inertial pressures prevent most organizations from radically changing strategies and structures. Only the most concrete features of technique can be easily copied and inserted into ongoing organizations.}
+\end{quote}
+
+It is not clear, in practical terms, what an organizational form consists of. In the software field, for instance, one could argue that we are currently experiencing a radical transformation of work practices, shaped around the Agile Manifesto \cite{Beck2001}; one could also argue that Agile is nothing more than ``old wine in new bottles,'' especially considering the hype and buzzwords that surround the movement nowadays. I deal with these considerations in section \ref{sec:Practices}.
+
+
+\section{Organizational Size and Formalization}
+\label{sec:Size}
+
+A final component of the work that informs this thesis refers to the impact of organizational size on performance and on the formalization of work processes.
+
+The construct of organizational size is deceptively simple. Different authors mean different things when they talk about size; different research questions demand different treatments of the construct. Kimberly \shortcite{Kimberly1976} provides a good summary of the problem and its potential solutions.
+
+Several studies point to the correlation between organizational size and formalization of work processes. Talacchi \shortcite{Talacchi1960}, for instance, correlates organization size with de-motivation, and de-motivation with counterproductive organizational behaviour; Blau and Schoenherr \shortcite{Blau1971}, through a study of employment agencies in the United States, conclude that larger organizations have greater structural complexity, greater formalization of behaviour, and greater task specialization. Citing these results, Haveman \shortcite{Haveman1993} concludes that ``together, these findings suggest that large organizations are more bureaucratic than small organizations,'' an insight that should not be surprising.
+
+Large organizations may find a way to maintain or improve upon their innovation, and to resist formalization, if the conditions are right. Lopes \shortcite{Lopes1992} reports that large corporations in the popular music industry found a strategy to remain innovative through the creation of federated, loosely connected firms. I discuss the feasibility of a similar solution to the problem of size in software organizations in section \ref{sec:SoftwareSize}.
+
+A different angle on this issue comes from evolutionary biology. Dunbar \shortcite{Dunbar1996} claims that among primates the size of the neocortex limits the size of the social groups of the species, and that for humans this number would be around 150. Dunbar suggests that beyond this number humans need to formalize their interactions, as they are biologically incapable of having effective informal interactions with larger groups. I do not have the background to judge the strength of these claims, and beyond this mention I do not construct my arguments based on Dunbar's research.

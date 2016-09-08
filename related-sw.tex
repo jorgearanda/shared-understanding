@@ -1,0 +1,581 @@
+\chapter{Coordination and Communication in Software Research}
+\label{chap:related-sw}
+
+In recent years we have seen a growing interest in questions regarding coordination and communication in software organizations. Studies addressing these issues are more frequent and more mature, and now there is a sizable community exploring the ``cooperative and human aspects'' of software development, using increasingly sophisticated methods and observations, and coalescing around a number of assumptions and schools of thought.
+
+In the previous chapter I mentioned that our community is not known for its theoretical developments, and this particular area of study is not an exception. But the fact that we have not articulated some unifying principles and theories does not mean that they are not present, tacitly and perhaps inconsistently, in the minds of software researchers. Our studies implicitly make a series of assumptions regarding software development that shape our constructs, guide the value we place on various attributes, and inform our vision of what is the typical context in which software development takes place. Often, these implicit theoretical frameworks have an unacknowledged debt to other disciplines, and understanding their source should lead to a clearer articulation of their application in our field.
+
+For studies of coordination and communication in particular, three underlying theoretical stances or paradigms, in the Kuhnian sense \cite{Kuhn1962}, seem to me to be especially prominent, even though none of them have been stated explicitly.
+
+The first paradigm is the prevalent academic approach to understanding software development. I call it \emph{Process Engineering}. It draws from the literature on scientific management and industrial quality control; its goal is to design software development processes and methods that produce repeatable, controllable, and optimizable results.
+
+One could argue that since the goal of Process Engineering researchers is to find optimal methods to structure developer tasks, the problem of coordination lies at the core of their work. Unfortunately, this paradigm tends to abstract people away, so that the real and practical challenges of communication and coordination are secondary concerns: they are rarely treated as relevant problems in their own right, and most of the interesting research in communication and coordination subscribes to other paradigms. Nevertheless, considering its widespread use, we must consider this paradigm in our analysis.
+
+Under the Process Engineering paradigm, communication and coordination are supposed to occur through the formalization of processes and organizational structures. Communication is conceived as the creation and sharing of documents and as formalized interactions. Coordination is mostly seen as adherence and commitment to a prescribed process; coordination dynamics are supposed to occur by decree, in the manner specified by the method.
+
+The second paradigm, \emph{Information Flow}, has two visible roots. One is a widespread ``conduit metaphor'' that treats information, effectively, as flowing among people, and between people and artifacts such as documents and tools. The other root is the claim that software development is essentially a cognitive problem, and that teams of software developers engage in a distributed cognition activity. As a result of these roots, and enabled by current data mining technologies, some researchers focus on studying the interactions among software developers and the structure of their social networks.
+
+According to this second paradigm, communication is roughly equivalent to interaction. That is, interaction events among developers (such as phone conversations or emails) are assumed to correspond to successful acts of communication. Coordination is studied from a structural perspective: the goal is to design socio-technical structures that do not impede the necessary flow of information within the organization.
+
+Finally, the third paradigm, \emph{Shared Understanding}, is based on a richer and more complex conceptualization of communication (which is seen as fraught with difficulties and likely to fail) and of cognition (in which people's cognitive models are a black box and total agreement among people is never certain). According to this perspective, communication breakdowns are common, beneficial when they occur early, and damaging when they occur late. Conflict is unavoidable. The goal becomes to find and refine strategies to enable software teams to achieve a robust shared understanding of their situations as efficiently as possible.
+
+Under this view, communication consists of the development of shared understanding of status and context among participants. Coordination consists of the development and negotiation of a shared understanding of their goals and plans. In latter chapters of this thesis I elaborate on this last paradigm in much greater detail, and formulate a theory of coordination and coordination for software organizations based on these ideas.
+
+\begin{table}[tpb]
+\caption{\label{ParadigmSummaryTable} Summary of the Paradigms' Stances on Coordination and Communication}
+\centering
+\footnotesize{\begin{tabular}{p{3.4cm}p{5.1cm}p{5.1cm}}
+\hline \hline
+\vspace{1pt} \bfseries Paradigm & \vspace{1pt} \bfseries Approach to Coordination & \vspace{1pt} \bfseries Approach to Communication \\
+\hline
+\vspace{0.5pt} Process Engineering & \vspace{0.5pt} Adherence and compliance to prescribed process & \vspace{0.5pt} Creation and sharing of documents; formalized interactions \\
+\hline
+\vspace{0.5pt} Information Flow & \vspace{0.5pt} Structural analysis of socio-technical system & \vspace{0.5pt} Interaction corresponds to successful communication \\
+\hline
+\vspace{0.5pt} Shared Understanding & \vspace{0.5pt} Development and negotiation of shared understanding of goals and plans & \vspace{0.5pt} Development of shared understanding of status and context among participants \\
+\hline
+\end{tabular}}
+\end{table}
+
+Table \ref{ParadigmSummaryTable} summarizes these paradigms. The following sections describe them and discuss representative samples of research from each of them.
+
+
+
+\section{Process Engineering}
+\label{sec:ProcessEngineering}
+
+\subsection{Overview of the paradigm}
+
+Within our community there is a widespread notion that software development is an engineering discipline, albeit a young and immature one. That software development is seen as engineering is evidenced by the names of the top-tier publications of the area; that it is seen as deeply lacking in maturity is clear among the constantly unfavourable comparison made by the community between software development and, for instance, the fashion industry \cite{Jacobson2009}, and by the unresolved issues of certification and of the creation of a software engineering body of knowledge.
+
+The term ``software engineering'' was invented in 1968. It was used as the title of an international NATO conference:
+
+\begin{quote} 
+\emph{The phrase `software engineering' was deliberately chosen as being provocative, in implying the need for software manufacture to be based on the types of theoretical foundations and practical disciplines, that are traditional in the established branches of engineering.} \cite{Naur1969}
+\end{quote}
+
+Although the term had detractors, and despite its aspirational (rather than descriptive) nature, it was promptly adopted by the community. In principle it is not inaccurate: many branches of engineering consist of the application of scientific and technical knowledge to the design and construction of artifacts. But the term is a source of confusion, as it means different things to different people. In particular, three meanings should be noted. One sees software engineering as applied computer science, and although it is prevalent among formal methods researchers, it has almost no representation among those that study communication and coordination, nor among practitioners. The second refers to training, discipline, and professionalism in software development, although not necessarily to certification, membership to an engineering association, or a standard approach to software development. For many organizations, to talk about ``software engineers'' and ``software professionals'' is equivalent. The third common meaning, and the one we are concerned with here, sees software development as an industrial or manufacturing process. Cockburn describes this approach from a practitioner's perspective:
+
+\begin{quote}
+\emph{The trouble with using engineering as a reference is that we, as a community, don't know what that means. [...] In my travels, people mostly use the word \emph{engineering} to create a sense of guilt for not having done enough of something, without being clear what that something is. [...] When people say ``Make software development more like engineering,'' they often mean ``Make it more like running a plant, with statistical quality controls.''} \cite{Cockburn2001}
+\end{quote}
+
+The idea of software development as manufacture triggers a series of concepts associated with industrial processes: Taylorism, division of labour, compartmentalization of work, pursuit of automation, and quantitative management. It also draws heavily from the process improvement literature \cite{Deming1986}. It espouses the following values:
+
+\begin{itemize}
+\item \textbf{Predictability and stability.} Two of the main goals are the ability to predict the outcome of software projects within reasonable bounds, and to reduce or eliminate the causes of special variance in the process so that projects have consistent (and more predictable) outcomes.
+
+\item \textbf{Controlled process improvement.} A third goal is to continually improve the performance of the organization through carefully monitored improvements to the established process.
+
+\item \textbf{Quantitative measurement.} Quantification is presented as the key to achieve the goals described above. Lack of numbers betray a lack of knowledge of the level of stability and improvement of the organization. DeMarco, among many others, advocated for the idea that \emph{``you can't control what you can't measure''} in the context of software development \cite{DeMarco1986}.\footnote{DeMarco, however, retracted from this view and the ``software engineering'' approach to software research recently \cite{DeMarco2009}.}
+
+\item \textbf{Minimization of the role of discovery and design.} Although software development is essentially an activity of creation and invention, large parts of it are conceived as a manufacturing process. The importance of discovery and design is sometimes recognized, but it is assumed to happen naturally and without hindrance from the establishment of quasi-industrial processes.
+
+\item \textbf{Abstraction of the human element.} Software professionals are largely presented as an abstraction. In an ideal Process Engineering environment, one should be able to talk about people as interchangeable pieces in the system; since people have widely different attributes, the engineering paradigm needs to include some abstracted account of the ability and productivity of individual software professionals. Attributes that are difficult to operationalize, such as morale, personal ambition, conflicts, or personal preferences, are usually ignored.
+\end{itemize}
+
+Perhaps the gold standard of this paradigm in software development is Humphrey's Capability Maturity Model \cite{Humphrey1989}. The CMM classifies ``software processes'' in a scale of five increasingly controlled categories, from the \emph{Initial} level, which is the typical state of (perceived) chaos of the industry, where the organization obtains unpredictable and haphazard results, to the \emph{Optimized} level, in which it has managed to extricate all special causes of variation \cite{Deming1986} and continually and incrementally reviews its process to minimize common causes of variation. To move an organization towards a higher level, the CMM demands the implementation of a set of processes and practices designed to control quality. Most of the practices require a heavy use of metrics and statistics, and of documentation that keeps track of all aspects of software development.
+
+The CMM is but one of many software process proposals that can be characterized similarly. And considering the prevalence of software process improvement approaches in academic journals and in standard Software Engineering textbooks \cite{Pressman2004,Pfleeger2001,Ghezzi2003}, it seems fair to say that a dominant fraction of the research community implicitly regards software process improvement not only as a sensible, beneficial, and professional approach, but also as a solid conceptual foundation for software research.
+
+This is problematic from a coordination and communication perspective. The Process Engineering paradigm brushes over the challenges of coordination and communication, assuming they are sufficiently satisfied through process adherence, documentation, and the prescription of practices. Nevertheless, there exists research on communication and coordination that, tacitly or explicitly, uses the Process Engineering paradigm as its foundation. It differs from most of the software process improvement literature in that it is less prescriptive and blunt, but it still shares with that literature the values listed above, as well as a number of assumptions about software development practice that should be made explicit.
+
+First and most notable is the assumption that the application of processes and practices provides predictable results with relative independence from context. This research attempts to isolate the effects of the practice under study from considerations such as the size of the organization, the kind of software it produces, and the professional history and abilities of its members. It strives to determine whether the effects of a process or practice are positive or negative, and (if possible) how much, irrespective of these characteristics. When context is mentioned it takes a minor role: a warning that results may vary under different situations, and that more research is needed to determine this.
+
+This may simply be a symptom of the immaturity of our field. The research agenda of the Process Engineering paradigm does call for a careful tailoring of practices to contexts \cite{Kitchenham2004}. The goal is that, eventually, process engineers should be able to look up the data for their particular context and determine which practices are convenient for them. But the few data points currently available are presented as moderately general claims, not as if beginning to populate a very sparse matrix of treatments \emph{versus} contexts.
+
+The second important assumption is that processes are applied to organizations, not grown by them. They can be engineered and exchanged the way one can upgrade the pieces in a computer, and they can be executed with little variation, like a cooking recipe. In other words, it is the assumption that a manager can in fact dictate the detailed process that the company will implement, and the organization will follow in both letter and spirit. This despite the numerous reports, including our own \cite{Aranda2007}, that note the homegrown character of successful solutions used in practice, and the need for true commitment (as opposed to conformance) to a software process improvement initiative from all organizational levels if it is to be successful \cite{Abrahamsson2001}.
+
+In order to make this exposition more concrete, the following sections discuss some representative examples of this kind of research in the context of communication and coordination issues, and papers that have pointed to problems with this approach.
+
+
+\subsection{Requirements Engineering Processes (Damian \& Chisan, 2006)}
+
+Requirements engineering\footnote{A term that mirrors \emph{Software Engineering} in both intention and accuracy.} refers to \emph{``the process of discovering [the purpose of a software system] by identifying stakeholders and their needs, and documenting these in a form that is amenable to analysis, communication, and subsequent implementation''} \cite{Nuseibeh2000}. As such, it is one of the aspects of software development that demand special attention for their communication and coordination challenges. It is also known to be highly problematic: requirements errors are consistently mentioned as causes of project failure, they are particularly expensive to fix, and they resist simple technical solutions \cite{Boehm1988}.
+
+The requirements engineering community has by now produced numerous processes and practices intended to address these issues. Researchers believe that their proposals lead to improvements in the quality and productivity of software projects, but they recognize that they lack concrete evidence of their impact \cite{Kaindl2002}. One of the prominent efforts to obtain this evidence is the work of Damian \emph{et al.}; particularly the report that summarizes the findings of a 30-month case study of the requirements process improvement experience in a large software project \cite{Damian2006}.
+
+The case study had one main research question: \emph{``how do improvements in requirements engineering processes relate to improvements in productivity, quality, and risk management?''} The researchers recognized that any improvements caused by requirements processes would not be simply observable:
+
+\begin{quote}
+\emph{[...] requirements engineering activities are bound tightly with other system engineering activities and [...] a complex interaction between REP [Requirements Engineering Processes] and other processes in the organization may exist. [...] It is difficult to control and understand the effects of REP over the course of a nontrivial development project, making the empirical study of RE very difficult.}
+\end{quote}
+
+Therefore, their goal was partially to map this ``complex interaction'' between requirements work and other software project activities. To do so they used questionnaires, interviews, and document inspections. They performed their observations at three different points during the life of the software project.
+
+Several of their results are of interest to this thesis. For instance, the use of the \emph{cross-functional teams} practice reportedly improved communication among team members and reduced their rework. Negotiation processes benefitted from having \emph{structured requirements documents} and requirements formulated using \emph{decomposition}.
+
+Overall, the researchers traced no negative consequences of applying requirements engineering processes, and many positive consequences. The differences in impact were only a matter of degrees: according to team members some practices (such as \emph{cross-functional teams}) were more useful than others (such as \emph{structured requirements documents}).
+
+Some threats to validity indicate that these results should be used with caution. They depend heavily on opinion surveys, and there are no explanations on the reasons by which the effects observed hold, nor the circumstances under which they might not. The researchers believe that the company under study \emph{``is representative of a fairly large class of software development organizations''}, but although their description of the organization is certainly generic (150 staff members headed by a project manager and a product manager; a strong relation to marketing; a mature and customizable product line), it is not clear to which extent deviations on these characteristics would cause other companies to lose the rewards associated from these requirements processes.
+
+Most of the values and assumptions mentioned in the previous discussion are prominent in this study. Requirements practices are assumed to work with relative independence from context, and firms that wish to improve their processes can do so successfully by decree. The benefits of establishing requirements processes are, partly, seen as a reduction of variability and risk. The role and characteristics of individuals, and most detailed aspects of their team configuration, are absent from the discussion.
+
+However, Damian and Chisan depart from the Process Engineering paradigm in one important point. They mention the role of purposeful collaboration as the key factor to explain the success of these processes:
+
+\begin{quote}
+\emph{[...] we believe that the constant that pervaded the progress made at [the firm] is collaboration, which emerged as a powerful theme in many of the improvements that have been discussed so far. Compared to the isolated, siloed work culture that had previously dominated, the changes in the new RE process have served to join the organization in a united effort. Reorganizing teams cross-functionally allowed for open lines of communication. [...] The requirements themselves provided a basis for communication, coordination, and work. [...] If it was possible to separate the effects of human improvement from that of technical improvement, we might see that the greater part of improvement had been due to more effective collaboration throughout the project.}
+\end{quote}
+
+The conclusion they reach is that requirements processes are beneficial because they improve collaboration, and collaboration improves project performance. As we will see this idea plays a major role in the discussion of the next chapters of this thesis. Damian and Chisan provide a list of practices that, when established, potentially improve collaboration in software companies. Other mechanisms to enhance collaboration are not discussed.
+
+
+\subsection{Success Factors in Software Process Improvement (Dyb\aa, 2005)}
+
+The Process Engineering paradigm is not often made explicit in communication and coordination studies. However, some researchers do address it directly, and draw insights from interdisciplinary quality assurance studies for use in software development.
+
+A useful gateway into this research is Dyb\aa's work on success factors in software process improvement (SPI) initiatives \cite{Dyba2005}. His report is interesting for two main reasons: it provides an exhaustive literature review of SPI, and it distills from that literature review a conceptual model and a set of hypotheses to identify the success factors of SPI initiatives.
+
+Dyb\aa's conceptual model identifies several variables that, moderated by two contextual variables, determine SPI success. His independent variables are:
+
+\begin{itemize}
+\item \textbf{Business Orientation.} The extent to which SPI goals and actions are aligned with explicit and implicit business goals and strategies. Dyb\aa~refers to learning theories that reject context-free models, and states that SPI should \emph{``align improvement activities to the real needs of the individual business rather than the abstract expectations of context-free models of SPI.''}\footnote{This does not contradict my observation regarding the relative lack of concern for context in the Process Engineering paradigm. A complete rejection of context-free transfer models entails the abandonment of abstracted software processes; Dyb\aa~merely calls for tailoring the models to the characteristics of each case; a non-controversial stance.}
+
+\item \textbf{Involved Leadership.} The extent to which leaders at all levels in the organization are genuinely committed to and actively participate in SPI. Dyb\aa~identifies this factor as being of \emph{``paramount importance.''} It is, however, a particularly vague factor: it is unclear whether it can be assessed at all.
+
+\item \textbf{Employee Participation.} The extent to which employees use their knowledge and experience to decide, act, and take responsibility for SPI. This is a general case of the previous factor, and it suffers of the same vagueness problem.
+
+\item \textbf{Concern for Measurement.} The extent to which the software organization collects and uses quality data to guide and assess the effects of SPI activities.
+
+\item \textbf{Learning Strategy.} The extent to which a software organization is engaged in the exploitation of existing knowledge and in the exploration of new knowledge. Dyb\aa~distinguishes between exploitation and exploration, treats them both as relevant variables, and calls for a balance among them.
+
+\end{itemize}
+
+Dyb\aa~argues that all of these variables have an impact on the success of SPI initiatives, and that they synergize---their joint application results in greater effects than their separate application.
+
+The paper then reports an empirical evaluation of this conceptual framework. It consists of a survey of 120 software organizations. Dyb\aa~concludes that all of the hypotheses derived from his conceptual model were validated by the survey results, and that this has important theoretical and practical implications:
+
+\begin{quote}
+\emph{From a theoretical perspective, these findings add an important new dimension to empirical software engineering research in that they verify the importance of organizational factors for SPI success. From a practical perspective, this suggests that, rather than trying to imitate technical procedures, software organizations should focus their SPI efforts on creating an organizational culture within which these procedures can thrive. This differs substantially from that found in most of the existing SPI literature, which focuses almost entirely on software engineering tools and techniques.}
+\end{quote}
+
+I share Dyb\aa's conviction that organizational factors have been overlooked by the community. However, this study only provides partial support to his conclusions. This is mainly due to problems with the measurement instrument used. It consists of a list of questions that attempt to assess the presence of subtle constructs in a direct and straightforward fashion. For instance, one question asks whether ``our SPI goals are closely aligned with the organization's business goals,'' but an affirmative answer tells us very little about the nature and the stability of this alignment, and about the respondent's misunderstandings about what each set of goals actually consists of. Most problematically, by the design of the study any success in SPI initiatives can only be explained by the constructs that Dyb\aa~chose to measure with this instrument.
+
+Despite the methodological weaknesses of the paper, it is a significant contribution. It makes explicit several of the values and assumptions described earlier, and it links them to the seminal research in the area of quality improvement. It also provides a comprehensive list of resources for the SPI community, a conceptual model of SPI success, and hypotheses derived from this model that can be validated with future, more careful studies.
+
+
+\subsection{Use of Documentation (Lethbridge et al., 2003)}
+\label{sec:Lethbridge}
+
+The results of the three studies summarized by Lethbridge \emph{et al.}\ \shortcite{Lethbridge2003} present an interesting critique of the Process Engineering paradigm. They are not concerned with process engineering themselves, but rather with one of the hallmarks of process methodologies: documentation.
+
+Informally, software developers and managers know that it is hard to comply with the kind and amount of documentation prescribed by most methodologies. One of the contributions of Lethbridge \emph{et al.}\ is to show that this intuition is true. In a series of case studies, they found that generating documentation is time-consuming, and that the resulting documents are usually untrustworthy, out of date, and poorly written. They are also rarely consulted. Some essential documentation (system architecture information, for instance) is welcomed by developers; most of it is not.
+
+That documentation is poorly used and that software developers drag their feet to use and update it are not new insights. To some managers and academics they are signs of lack of discipline, and arguments for the implementation of tighter controls and harsher incentives to adhere to the process. But Lethbridge \emph{et al.}\ argue that the low use of documentation is not necessarily detrimental:
+
+\begin{quote}
+\emph{[...] should we force software engineers to keep documentation meticulously up-to-date? Formal-process theorists would certainly argue that we should. In fact, most published methodologies prescribe the documentation types that [software engineers] should write and use. But where's the real evidence that the prescribed processes work? Most of it is based on opinion or conjecture.}
+\end{quote}
+
+In fact, Lethbridge \emph{et al.}\ argue, the approach taken by software developers makes more practical sense than the blind adherence to a process:
+
+\begin{quote}
+\emph{Some people will argue that [software engineers] fail to update documentation because they're lazy. Many managers have responded to this assertion by trying to impose more discipline on software engineers---forcing them to update documents. We suggest that most [software engineers] aren't lazy; they have discipline of a different sort. They consciously or subsconsciously make value judgments and conclude that it's worthwhile to update only certain kinds of documentation.}
+\end{quote}
+
+The idea that software developers familiar with their own context can determine their best course of action is usually absent from Process Engineering proposals---it leads to variability of results, it does away with quantitative managerial control, and it depends too much on talent and trust. These studies are an important challenge for such proposals. If developers will not adhere to them, or will comply in letter but not in spirit, processes will only provide bureaucratic overhead and the appearance of control.
+
+
+
+\subsection{Scientists and Software Engineers (Segal 2005)}
+\label{sec:Segal}
+
+Segal \shortcite{Segal2005} offers an interesting report on the blind application of a methodology to a software project. The process, as reported by Segal, was \emph{``a traditional staged document-led methodology''}; the goal was to develop software components for scientists that would use them to drive research instruments in space.
+
+Both the software developers and the project managers at the research organization saw the project as following a series of predetermined steps. Roughly: the scientists determine the requirements for the instrument, which are captured in a ``software user requirements document'' (SURD). The developers study this document and produce, in turn, a ``software specifications document'' (SSD). The scientists review the SSD against the SURD. The developers write the code, testing it against the SSD, and when it is finished, the scientists test it against the SURD.
+
+This method turned out to be inadequate for scientific software development. Scientists were used to having requirements emerge through a process of scientific and practical discovery, not to articulate them upfront. A few quotes from the scientists in Segal's case study exemplify this:
+
+\begin{quote}
+\emph{``I think with a lot of systems we have---they evolve... you don't design them a hundred percent working instrument from scratch. You come up with an idea. And then you use it, and then you realize that... it needs tweaking.''}
+
+\emph{``...being like a bunch of scientists, we [thought] we could change everything up until the last minute... [The software engineers] were just saying: sort the requirements out now! Do it now! You haven't got time!''}
+\end{quote}
+
+The problem was not only that the managers and the software developers expected the project to follow this method. It was, importantly, that they expected communication and coordination between the two groups (scientists and developers) to take place almost exclusively through an adherence to the mechanisms prescribed by the method:
+
+\begin{quote}
+\emph{``There are certainly lots of things which in retrospect would have been useful if they'd been incorporated in the software. They were left out and I have the feeling that perhaps [the research organization] weren't really aware they were being left out. \emph{Although, of course, if you read the user requirements document, nowhere is it stated that these features will be present... [The research organization] were sort of assuming that these [features] were going to be available. And we were sort of assuming they knew they weren't.''} [Segal's emphasis]}
+\end{quote}
+
+While the developers thought that sticking to the documents and the method established was appropriate, communication was not really taking place among both parties. This quote is from the scientific project manager:
+
+\begin{quote}
+\emph{``Did we read the specifications?---I think it's very difficult to read a list of specifications that goes from specification one to specification four hundred. You know, it's a very very dry language is a software specification document [laughs].''}
+\end{quote}
+
+Segal's recommendation after analyzing this project's failures was not to reject a methodology-centric view of software development, but to tailor methodologies to the context at hand.\footnote{Which happens in practice most of the time. Fitzgerald reports that less than half of software professionals use any published methodology, and only 6\% follow any methodology rigorously \cite{Fitzgerald1998}.} In the case she studied, she believes a combination of traditional and ``agile'' techniques would be most effective, and she describes the agile techniques that would best fit the context.
+
+Incidentally, agile methods are interesting cases to explore from the point of view of the Process Engineering paradigm. As Sharp and Robinson \shortcite{Sharp2004} describe:
+
+\begin{quote}
+\emph{Agile methods are a response to more rigorous and traditional approaches to software development which emphasize the (perceived) importance of predictive planning, the use of appropriate processes and tools, and the need for documentation. Advocates of agile methods---agilists---hold that such rigorous and traditional approaches have not delivered timely, effective software that meets the needs of customers in the reality of the problems encountered by practitioners---problems characterized by change, speed and uncertainty. Agilists offer approaches which stress collaborative practices, face-to-face communication, collaboration with the customer and the importance of the individual and the team.}
+\end{quote}
+
+The Agile Manifesto \cite{Beck2001} states the values of ``agilists'' clearly:
+
+\begin{quote}
+\emph{We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:}
+
+\emph{~~~~~~Individuals and interactions over processes and tools}
+
+\emph{~~~~~~Working software over comprehensive documentation}
+
+\emph{~~~~~~Customer collaboration over contract negotiation}
+
+\emph{~~~~~~Responding to change over following a plan}
+
+\emph{That is, while there is value in the items on the right, we value the items on the left more.}
+\end{quote}
+
+Adherence to the spirit of this manifesto entails that for agile proposals (that is, for those that share these values) the term ``methodology'' is a misnomer, and it is inadequate to mix them with methodologies that lend greater weight to processes, documentation, contracts, and plans. And yet in recent years many of the software development organizations that depend heavily on the items on the right have attempted to be ``agile'' by adopting a number of practices associated with agile software development (such as test-driven development or short iterations) and incorporating them in their previous methodology, as recommended by Segal in this instance.
+
+But the report by Sharp and Robinson provides a valuable counterpoint to Segal's recommendation. I will describe it in greater detail in section \ref{sec:Sharp}; for now I offer this summary: it consists of an ethnographic study of one software company that adheres in letter and spirit to agile software development, specifically, to Extreme Programming\footnote{The most prominent aspect of XP is a list of twelve practices; less known are the so-called ``XP values'' of communication, simplicity, feedback, courage, and respect that inform all XP activities.} \cite{Beck1999}. One finding from Sharp and Robinson's report has particular relevance for this discussion. It regards the nature of XP practice: they observe that \emph{``the reality of practice [is] a sophisticated accomplishment that is far more than the rote following of 12 prescriptive practices.''} Sharp and Robinson claim that, for the team they observed, the practices are there to support collaboration, not to establish a repeatable and engineered process. Furthermore, other practices could also lead to the same benefits: the emphasis is given to the underlying values and principles, not to the surfacing practices that an organization chooses to implement.
+
+Of course, if a methodology prescribes to \emph{abandon method}, it ceases to be a proper methodology and becomes a set of guidelines for expert professionals. This detracts from its intended purpose of prescribing how software should be developed, and from any claim to stability, repeatability, statistical validation, and incremental optimization. Agile ``methodologies'', in their essence, seem incompatible with the ideals of Process Engineering. Perhaps combining them with more traditional methodologies makes practical sense. But the combination, in effect, rejects both the principles of the Agile Manifesto and the ability to do Process Engineering.
+
+
+\section{Information Flow}
+\label{sec:InfoFlow}
+
+\subsection{Overview of the paradigm}
+
+A second approach to understand software practice is built upon a cognitivist view of group work. In essence, it consists of an information processing view \cite{Galbraith1974} that treats software development activities as cognitive problems that people solve in groups.
+
+Although this is a cognitivist perspective, it hails from the fringe, rather than the core, of cognitive science. According to Hutchins \shortcite{Hutchins1995}, traditional cognitive science is heavily invested in an algorithmic view of the mind. The belief is that thought processes can be formally represented (for instance, it is possible to formally describe the steps needed to perform a multiplication). Once abstracted, thought processes can be executed by any able organism, natural or artificial, which would then exhibit these cognitive capabilities itself.
+
+In his book \emph{``Cognition in the Wild''}, Hutchins describes an alternative view of cognition \cite{Hutchins1995}. He notes the weakness of traditional cognitive science thus:
+
+\begin{quote}
+\emph{The computer was not made in the image of the person. The computer was made in the image of the formal manipulations of abstract symbols. And the last 30 years of cognitive science can be seen as attempts to remake the person in the image of the computer.}
+\end{quote}
+
+His framework, which became known as \emph{distributed cognition}, attempts to overcome this problem.\footnote{According to Nardi \shortcite{Nardi2002}, this effort was not entirely successful, as I discuss in page \pageref{Nardi}.} Studying the cognitive dynamics of ship navigation, Hutchins pointed out that cognition can be observed in interactions among people and between people and tools. One of the key innovations of his framework is the choice of unit of analysis: not an individual, and not a thought process, but the functional system of people and artifacts in charge of executing a cognitive task. That is, for a distributed cognition researcher, the functional system is a single cognitive entity, and although no element within this entity may know how to solve the cognitive task, the full range of interactions within the group produce a workable solution to the problem at hand. In Hutchins' study of sea navigation, each person in a ship navigation team performs a set of simple tasks based on their role and the information available to them, and although no person in the team has a full knowledge of the situation, the end result is a calculation of the ship's position in the world.
+
+The framework centers on the idea that distributed cognition consists of \emph{transformations of representational states across representational media}. Hutchins presents the people and artifacts in a cognitive system essentially as receivers, processors, and senders of information. His ship navigation study has several examples of this phenomenon. For instance, a lookout uses a compass-like tool to find the degrees from the north at which a nearby peak is located in relation to the ship; he transmits the resulting number electrically and through air waves to another person, who compiles it with the observations of a different lookout. Yet another person takes these numbers and uses them with more tools (a map of the area, rulers, devices that in Hutchins' view are pre-computations to solve the cognitive task), and calculates the ship's position in the world. Hutchins claims this is a cognitive problem. The process could be executed by a single person, and in fact it is, when there are no time constraints. But when the ship is in a delicate situation, such as when it enters a harbor, the process has to be divided among team members and tools, and they must transform the information they receive and present it to their collaborators in ways that will be useful for them.
+
+The framework has several other ideas worth discussing here. First, it focuses on the study of situated cognitive activities, as opposed to artificial laboratory settings. According to the theory, cognitive performance should not be analyzed in constrained settings, since much of the real cognitive work of people is done by the interactions among them and with their context.
+
+Second, artifacts are viewed as embodied knowledge. They store rules and processes that simplify the cognitive tasks of their users.\footnote{\emph{Cfr.}\ Baetjer's argument that software is a form of capital \cite{Baetjer1997}. Baetjer proposes that the software an organization has built represents an accumulation of intellectual capital, and software reuse is one of the main mechanisms by which the organization can take advantage of that capital.} Therefore, analyzing the artifacts people use is an essential aspect of the framework.
+
+Third, identifying the paths that information follows to reach the people that need it is a key consideration of distributed cognition work. Team members that work on a cognitive problem start with different bits of knowledge, and an important step towards solving the problem is to share and transform them, through mediated or direct communication, until they reach the person who needs them.
+
+Finally, the framework studies cognitive work on two different levels: in the short term it focuses on the actual resolutions of cognitive problems. In the long term it analyzes the learning and structuring activities that take place in teams.
+
+The debt of the Information Flow paradigm to this framework is often unacknowledged or simply not perceived. It is foreign to most software researchers, although they can be said to use some of its components informally. However, distributed cognition has in fact been discussed in our community. Halverson \shortcite{Halverson2002} presents distributed cognition and activity theory as appropriate theoretical frameworks for research in computer-supported cooperative work. Herbsleb and Mockus \shortcite{Herbsleb2003}, in a paper discussed below, state that their work \emph{``could be considered a formalization of one key aspect of distributed cognition''}.
+
+The aspects of the framework that are most widely used in software research are the view of software development as a group cognition activity and the perception that the essential activity in software development is the transformation and flow of information across the social network of the development team. In the organizational context, the latter aspect has been well-developed as an information-processing view of organizational design \cite{March1958,Galbraith1974,Tushman1978}.
+
+The study of the flow of information in software teams has been particularly active in recent years. Several research groups have focused on its characteristics, patterns, obstacles, and enablers \cite{Cataldo2009,Nagappan2008,Damian2007}. Unfortunately, this flow of information is often treated rather narrowly. To understand this conceptualization it is helpful to think of the principles of Information Theory. In the introduction to his seminal paper on the topic, Shannon argues:
+
+\begin{quote}
+\emph{The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point. Frequently the messages have \emph{meaning}; that is they refer to or are correlated according to some system with certain physical or conceptual entities. These semantic aspects of communication are irrelevant to the engineering problem.} \cite{Shannon1948}
+\end{quote}
+
+While dismissing semantics makes sense for Shannon's purposes, it is a questionable decision for understanding communication among people. Nevertheless, as we will see, in software development research the act of sending information is often perceived as equivalent to the act of communicating it.\footnote{Information also flows in Hutchins' framework, although in a more nuanced fashion that includes considerations on the difficulty of achieving a shared understanding of the information transmitted.}
+
+According to Bryant \shortcite{Bryant2000}, the concept of information flow permeates software development research.\footnote{Bryant proposes an alternative metaphor for understanding software development, one we will return to in the next section.} He argues that Reddy's ``conduit metaphor'' of communication \cite{Reddy1993} is preeminent in the field:
+
+\begin{quote}
+\emph{Software developers understand that communication with users, clients and so on is critical, but this is invariably seen as a flow between domain experts, users, and developers. Difficulties or failures are described in terms of blockages or breakdowns in the channeling of information. The basic conceptual imagery of requirements engineering rests on the conduit metaphor. The information about requirements is passed from `users' to `developers'; or in some instances the requirements exist in disembodied form, and have to be captured.}
+\end{quote}
+
+Although there are fewer papers that adopt the paradigm of software development as a group cognition activity with information flowing through the socio-technical network, several patterns have begun to arise. These papers share some values with the Process Engineering paradigm, but they have notable differences as well:
+
+\begin{itemize}
+\item \textbf{Decontextualized quantification of networks and interactions.} Of central importance for these studies is obtaining and analyzing quantitative data on the structure of socio-technical networks and on the interactions among its agents. Many aspects of team behaviour are dismissed in this quantification; among them the nature of the interactions, the purpose of the agents, and the degree to which observed patterns are novel or routine. Other social networks, such as networks of trust, familiarity, or support, are not usually studied.
+
+\item \textbf{Primacy of external activity.} A consequence of the pursuit of quantitative data on structure and interactions is that software development is conceived almost exclusively as interaction. Visible coordination and communication become not only important, but the key aspects of development. Interaction is evidence of distributed cognition; tacit agreements among team members, and hours spent programming in solitude in front of a machine, are not.
+
+\item \textbf{Minimization of the role of discovery and design.} Like the Process Engineering paradigm, Information Flow studies minimize the fuzzy aspects of the creative process. The distributed cognition framework itself has a problem coming to terms with this issue:
+
+\begin{quote}
+\label{Nardi}
+\emph{Messy cognitive activities conducted every day by ordinary humans, such as interpretation and imagination, are difficult to consider within [the distributed cognition] framework. Halverson cites Hutchins' definition of cognition as ``\emph{computation} realized through the creation, transformation, and propagation of representational states'' (emphasis added). Neither interpretation nor imagination, (nor many other cognitive capabilities) however, can be reduced to computation} \cite{Nardi2002}.
+\end{quote}
+
+\item \textbf{Abstraction of some human elements.} This, again, overlaps with the Process Engineering paradigm, but to a lesser extent. Process Engineering is simply not concerned with individuals; Information Flow research is concerned with them to the extent in which they participate in interactions with others in their network. Although some of their characteristics are valued (their position in the hierarchy and in their network, their frequency of interactions, their geographic location), most others are not.
+
+\end{itemize}
+
+As in the previous section, it is helpful to describe some of the assumptions made by research that uses an Information Flow paradigm. Two stand out.
+
+First, and related to the conduit metaphor mentioned above, most research in the area assumes that interaction is equivalent to communication. That is, interaction events, or even \emph{unilateral} interaction events (the sending of an e-mail or instant message, for instance) are assumed to represent project-relevant communication acts. If two people interact frequently, we assume they have a strong work collaboration. If two other people only interacted once, they are assumed to have communicated less information than the first pair across their frequent exchanges. 
+
+A more dangerous but less prevalent form of this first assumption is to treat only \emph{recorded} interactions as equivalent to communication. This means, for instance, to assume that the interaction events recorded in an instant messaging log are appropriate representations of all the communication acts in a team. It is an assumption often made due to practical constraints (such as only having access to instant messaging logs), but it is problematic nonetheless \cite{Aranda2009}.
+
+The second assumption is to treat software teams as if there was a unity of purpose among their members. This means both to assume that they have the best interests of the team in mind, and that they have a shared understanding of them. Personal conflicts, political calculations, and misunderstandings of goals are dismissed as irrelevant. Unity of purpose is essential from a distributed cognition perspective: a cognitive entity that struggles with itself or has conflicting understandings of the problem it needs to solve is hard to explain under the framework.
+
+The following papers embody the Information Flow paradigm when applied to the study of coordination and communication in software projects.
+
+
+\subsection{Identification of Coordination Requirements (Cataldo \emph{et al.}, 2006)}
+\label{sec:Cataldo}
+
+The core ideas of this work by Cataldo \emph{et al.}\ \shortcite{Cataldo2006} are that (a) artifacts have a network of dependencies, (b) people have ``task dependencies'' to some of these artifacts, (c) therefore one can identify a person's ``coordination requirements'' to other people by computing who depends on the artifacts that are in the network of dependencies of the artifacts that the person uses, and (d) these coordination requirements can be compared with the interaction phenomena in the organization to determine its level of ``congruence''.
+
+Cataldo's paper is one of several recent works that advance the idea of ``socio-technical congruence'', which proposes that a software project is ``unfit'' to the degree to which the interaction network among its members does not match their ideal coordination network.\footnote{This adds a strange twist to Conway's Law: the socio-technical congruence approach tacitly suggests that rather than a law it is a ``best practice,'' and  software teams are dysfunctional to the degree they do not follow it. Conway observed that socio-technical congruence \emph{occurs}, not that it is beneficial---in fact, he argued that it is detrimental for deficient organizational structures, as the resulting technical artifacts will be deficient themselves. According to his reasoning, socio-technical congruence is always present, but it is only valuable for organizations with healthy social structures.}
+
+Most of the paper's proposals can be automated, which makes them compelling from a practical point of view. Unfortunately, this amenability to automation has some drawbacks. The network of task dependencies is extracted from the history of source code commits. If two files are updated in the same commit request, they are assumed to be interdependent (to the degree they are updated together). This is an incomplete network---it leaves out most artifacts that are not committed to a source code repository, all that are not committed along with code (such as design documents), and all that are mature enough that they are rarely updated, but that still affect significantly other artifacts. Another problem lies with the extraction of coordination networks. The actual coordination network is extracted from several proxies, such as the geographic location and the IRC logs of the organization members. Although clearly this is an incomplete source of data \cite{Aranda2009}, the authors have no qualms in using it as a proxy for the real coordination networks in an organization, as they \emph{``believe that the amount of communication within a given text channel is a reasonable, if approximate, measure of coordination behaviors, such as project management or exchange of technical information.''}
+
+Their results show that congruence is associated with a faster development time. Other analyses, such as an association between congruence and software quality, have been addressed in subsequent studies \cite{Cataldo2009}. More importantly, perhaps, is the shift in emphasis that this work has brought into our community. Despite the methodological weaknesses described above, this is a pioneering study of social networks in software teams, and it opens up interesting new lines of research. Its central hypothesis is very plausible: focusing coordination effort on places where there are highly interdependent code artifacts but little evidence of communication between their owners is likely to yield significant benefits. Furthermore, this represents a line of work that helps to move the field away from generic processes and methods, and into the communication needs of particular projects.
+
+\subsection{Information Needs in Software Teams (Ko \emph{et al.}, 2007)}
+
+For Ko \emph{et al.}\ \shortcite{Ko2007}, the ``fragmented nature of software development work'' is a considerable problem for software organizations. They note that developers communicate with each other frequently throughout their daily work, often interrupting their tasks to get an answer to a pressing question, and often interrupting their colleagues in the process. Since software development requires an intense concentration that is not achieved easily, these constant interruptions are major obstacles to productivity and efficiency.
+
+Ko \emph{et al.}\ studied the reasons why software development work is so fragmented. They devised a study to find the ``information needs'' of developers; that is, the kind of information that they look for when they interrupt their activities. Throughout the study they observed software professionals at work in 60-90 minute sessions, recording all task interruptions and building a taxonomy of information needs based on their data.
+
+They found that software development work is indeed fragmented: task ``switches'' occur at an average of every 5 minutes, though time fragmentation varied considerably per participant. Interruptions were often caused by conversations initiated by colleagues and by notifications and alerts about changes to their bug database.
+
+Some kinds of information needs were far more frequent than others. The most common was a need for staying aware of the activities of colleagues of the software professional. Also common were technical questions about code (\emph{``What code caused this program state? What code could have caused this behavior?''}) Overall, the list of information needs reported in this paper is a useful reference for other research in the area.
+
+The study did not discuss theory, but it clearly adopted an Information Flow paradigm, as its research questions are all based on the search and transfer of information within the organization. Although it did not study the organization in full, it follows the same principles described above: a distributed cognition entity in which its members fetch and transform the pieces of information they need to solve their problems; a conduit metaphor; a minimization of the role of invention and of human elements (such as motivation, conflict, and personality) in software development.
+
+The observations from the paper seem more aimed at improving software tool construction than to understanding in detail the nature of each kind of information need. Its summaries of common information needs choose strength in numbers over richness of the context of important events in the data. Nevertheless, it is valuable as an indicator of the fragmentation of software development work and as a reference for the kinds of information that developers seek and transmit within their organizations.
+
+\subsection{An Empirical Theory of Coordination (Herbsleb \& Mockus, 2003)}
+
+Perhaps nowhere is the Information Flow paradigm more explicitly embraced than in this work of Herbsleb and Mockus:
+
+\begin{quote}
+\emph{Many complex tasks are best understood as cognitive or problem-solving process \emph{(sic)} that are distributed over individuals and artifacts, distributed over time, and partially embedded in the habits, practices, and routines of the people who carry out the cognitive activities. While we are not aware of any attempts to formally and explicitly describe the coordination aspects of distributed cognition, the view of coordinated activity as many interdependent tasks, where coordination occurs by means of communication and sharing of artifacts, and is embedded in a social and organizational context has much in common with our view. In fact, our work could be considered a formalization of one key aspect of distributed cognition, i.e., the impact of mutual constraints among decisions} \cite{Herbsleb2003}.
+\end{quote}
+
+However, although the basic framework is drawn from the work of Hutchins discussed before, Herbsleb and Mockus attempt to modify it to increase its appeal for a computer science audience. They \emph{``note that there is considerable overlap between the subject matter of software engineering and several fields of social science''}, but they \emph{``suspect that software engineers and researchers in software engineering, who are generally trained in computer science or an engineering discipline, will never be comfortable with the theories of social science.''} Instead of educating the software professionals and researchers into the relevant characteristics of social science, their intent is to express the concepts of the framework through Computer Science formalisms:
+
+\begin{quote}
+\emph{We assume that there is a single (very large, but finite) set of engineering decisions that characterize software projects in general. One can then think of any particular software project as defined by the combinations of choices for those decisions that satisfy the requirements for that project. [...] Software engineering work proceeds by making choices for all of the decisions. As each is made, fewer decisions remain, until all of the decisions are made, resulting in a final product that may or may not satisfy the requirements.\footnote{Note that this is similar to defining a book as the combinations of words that satisfy the desire of the author. Writing would be equivalent to selecting a word at a time, until the book is finished. Although technically a valid definition, it ignores the issues of creativity, elegance, aesthetics, and judgment required of the author.}}
+\end{quote}
+
+They proceed to formulate software research principles, such as Conway's Law, in mathematical expressions. They then generate a set of hypotheses on coordination. They test two of these hypotheses. The first is that developers with higher indegree (more people assigning work to them) have lower productivity. This is based on their assumption that \emph{``the more people with whom one must coordinate one's mutually-constraining engineering decisions, the more infeasible decisions one is likely to make, hence [...] the less productive one is likely to be.''}\footnote{Other explanations for this phenomenon are not discussed. For instance, high indegree could represent a knack for solving the most convoluted problems---it would be indicative of a higher productivity relative to the difficulty of the tasks.} The second hypothesis is that modification requests that require work in different modules will have longer cycle times than modification requests that require work in only a single module.
+
+The evaluation of these hypotheses is performed with a study design similar to that of Cataldo \emph{et al.}\ discussed above. Both hypotheses are supported by the data, but the authors acknowledge that their results are initial steps in need of further study.
+
+\subsection{Organizational Structure and Quality (Nagappan \emph{et al.}, 2008)}
+
+Nagappan \emph{et al.}\ \shortcite{Nagappan2008} point out that the earliest works on coordination and communication in software development have a strong social design component: they focus on strategies to structure teams and organizations in order to improve their efficiency. Conway \shortcite{Conway1968} advocated for smaller structures to maximize shared understanding; Brooks \shortcite{Brooks1975} argued that product quality is strongly affected by organizational structure. Nagappan \emph{et al.}\ argue, however, that until now there has been little empirical evidence to substantiate Brooks' assertion. Their recent work is an attempt to fill this gap.
+
+To do so they performed an empirical case study of the development of Windows Vista, analyzing the relationship between organizational structure and product quality. These are difficult concepts, especially for quantitative data mining research, and the constructs used by the authors are not particularly satisfying. Organizational structure is measured based on Microsoft's human resources database, specifically its management hierarchy structure. Other human resources structures (project-based, space-based) are not considered. Product quality is measured based on recorded post-release failures.
+
+Underlying the researchers' hypotheses on organizational structure is an instance of the Information Flow paradigm. The assumption is that the more ``complex'' the organizational structure for a task is (the greater the organizational distance between developers, the greater the number of developers working on the same component, the higher the level of management that owns the code), the more careful coordination is required, and hence, the more likely it is that the code is prone to failures.
+
+The study results match the predictions of the researchers better than previous predictive models of product quality. Its metrics of organizational structure correctly identify failure-prone components with a 86.2\% precision and a 84\% recall rates, a considerable improvement over the second-best alternative, a code-churn model\footnote{Roughly, the more a file changes, the more likely it is to be prone to failures.} (78.6\% precision, 79.9\% recall). From a project management perspective, then, it is a useful model.
+
+This paper, along with others discussed in this section (Ko \emph{et al.}\ being the exception), are representative of a trend among researchers in the Information Flow paradigm. Faced with very large and geographically distributed software development projects, they forgo qualitative detail for quantitative analyses and data mining. Tools drawn from the social networks analysis literature become particularly important, although they are often interpreted narrowly. This is a radical departure from the original distributed cognition framework; Hutchins' research methods were richer and more detail-oriented. In fact it is a departure we have advocated ourselves, albeit to a lesser extent \cite{Aranda2006}.
+
+However valuable, there is a danger in proceeding down this path. As the previous discussions show, the results that have been produced with these methods are often questionable, and the loss of context may hide other factors that are potentially more important than those explored. As with other research in the area, this problem may be explained simply by the current immaturity of the field. But it points to the friction between the mathematical training of our community and the socially complex demands of our problems.
+
+
+\section{Shared Understanding}
+\label{sec:SharedUnderstanding}
+
+\subsection{Overview of the paradigm}
+
+In the previous section I mentioned Bryant's critique of the prevalent view of communication as flow of information in requirements engineering research \cite{Bryant2000}. His criticism focuses on the consequences of this paradigm: it unduly elevates the relevance of documentation while dismissing the vital relevance of true understanding. He writes:
+
+\begin{quote}
+\emph{How much more effective might the requirements process become if viewed in terms of a dialogue between distinct parties, each with their own assumptions and cognitive processes; where achievement of mutual understanding is a prime objective, but one which will not be reached without communicative effort from all participants.}
+\end{quote}
+
+Bryant frames his discussion in the terms of Reddy's \shortcite{Reddy1993} \emph{conduit metaphor} of communication and argues for an alternative framework to understand communication, which Reddy calls the \emph{toolmakers paradigm}.
+
+Reddy describes the toolmakers paradigm with a somewhat elaborate story that I will not transcribe in full here. In essence, he asks us to imagine a setting of isolated environments; in each of them lives a solitary toolmaker. Each of them is aware of the other toolmakers: there is a mechanism by which they can send each other diagrams to build tools. This is their only interaction mechanism. They attempt to cooperate by passing each other diagrams. But every environment is different (one environment, for instance, has no wood, but plenty of clay), and as a result the tools produced by each person, and the ways in which they are used, are different. In Reddy's story, after a few unsuccessful interactions the toolmakers discover that they cannot assume anything about the other toolmakers' environments; communication is recognized as an extremely difficult endeavour and a part of each toolmaker's goals is now to come to understand the characteristics of their peers' contexts:
+
+\begin{quote}
+\emph{[...] to the extent that the conduit metaphor does see communication as requiring some slight expenditure of energy, it localizes this expenditure almost totally in the speaker or writer. The function of the reader or listener is trivialized. The [toolmakers] paradigm, on the other hand, makes it clear that readers and listeners face a difficult and highly creative task of reconstruction and hypothesis testing.}
+\end{quote}
+
+In communication there is indeed \emph{something} that can be stored and transmitted---be it sound, words, or bytes. But for the toolmakers paradigm what is stored and transmitted is not an idea, but an imperfect guide to reconstructing an idea:
+
+\begin{quote}
+\emph{There are no ideas whatsoever in any libraries. All that is stored in any of these places are odd little patterns of marks or bumps or magnetized particles capable of creating odd patterns of noise. Now, if a human being comes along who is capable of using these marks or sounds as instructions, then this human being may assemble within his head some patterns of thought or feeling or perception which resemble those of intelligent humans no longer living. But this is a difficult task, for these ones no longer living saw a different world from ours, and used slightly different language instructions. [...] All that is preserved in libraries is the mere opportunity to perform this reconstruction.}
+\end{quote}
+
+The toolmakers paradigm, then, is based on a constructivist theory of knowledge. It states that the difficulty of communication lies in the different internal environments that each participant brings to the interaction. We cannot be sure that a sentence conveys the same meaning to different recipients; knowledge is acquired through a slow and complex development of shared understanding.
+
+There is a strong similitude between the toolmakers paradigm and the mental models framework of cognition \cite{Rogers1992}. Also following a constructivist tradition, the mental models framework states that we each have and develop ``models'' to explain and predict events of the world in our minds. These models can be incomplete and inconsistent, and they are in continuous evolution---we revisit them as we incorporate the unexpected results of our individual experiences.\footnote{There are actually at least two similar but different understandings of what a mental model is. The concept is interpreted as above by some researchers. Others theorize at a more basic level that the brain does not use propositional logic to reason, but instead generates a number of possible models of the world and selects among them. We are concerned with the first of these interpretations here.}
+
+According to the framework, these mental models cannot be directly observed, at least not with our current technology. They can only be probed functionally: they are a kind of black box. We can see their consequences in problem solving and in the interactions among people. Two individuals that have often worked together could appear to be in agreement---their mental models seemingly equivalent---and, at one point, come to a situation where one of them acts (in the view of the other) unexpectedly, in a departure from the expectations of the other's mental model \cite{Mathieu2000}. The mismatch in expectations may cause one or both individuals to review their models and adjust them accordingly. Communication and coordination proceed in this manner, through a sequence of breakdowns and recoveries, aiming towards a completely shared understanding of the world, though never quite achieving it. In this framework, conflicts are in fact beneficial, as they represent a mismatch between the mental models of several participants, and an opportunity to probe the differences and achieve a better understanding (a more refined mental model) of the situation \cite{Easterbrook1994}.
+
+Adopting this framework in the study of communication and coordination in software development requires re-casting the concepts in these terms. Communication is not the transfer of information among team members; it is the development of a shared understanding of their status and of the context in which they perform. And although coordination does involve the design of an efficient socio-technical structure, it is essentially a process of developing and negotiating a shared understanding of the team members' goals and plans, as these cannot be assumed to be uniform across the team \emph{de facto}.
+
+As in previous sections, I will discuss some of the values and assumptions of the research in the field that adopts the Shared Understanding paradigm. The following values seem particularly important:
+
+\begin{itemize}
+\item \textbf{Richness of phenomena.} The studies that use this paradigm tend to invest considerably more effort attempting to understand and describe the communication and coordination phenomena than the research discussed previously. This is possibly because most of these studies adhere to an ethnographic tradition. This richness of analysis and description is welcome, but it also comes with a cost: it is difficult to construct a reliable larger picture of software development based on significant instances of communication or coordination.
+
+\item \textbf{Incorporation of context to the analysis.} One of the weaknesses of most other studies of communication and coordination in software development is their lack of regard for contextual factors, despite the fact that the contexts in which the practice of software development takes place are extremely varied \cite{Aranda2007}. In contrast, this research treats context as essential to understand the phenomena under study.
+
+\item \textbf{Primacy of breakdown, negotiation, and recovery phenomena.} Not all communication and coordination events seem to be equally important for these studies. The most fruitful interactions, and the ones which researchers expound in greater detail, are those that show the friction and evolution of mental models as the team progresses. Similarly, recommendations produced by this kind of research tend to address issues and techniques that deal with the identification, negotiation, and resolution of breakdowns in understanding.
+
+\item \textbf{Disregard of processes and prescriptions.} As a consequence of the values listed above, this research tends to avoid the generalized prescription of processes or tools for the software industry. Some of this research, in fact, seeks to debunk the rationale and effectiveness of processes and practices prescribed by other studies. This stance mirrors Suchman's, in the sense that the Shared Understanding paradigm rejects the view that software development proceeds according to plans, and proposes instead that it consists of chains of purposeful, situated actions \cite{Suchman1987}.
+
+\end{itemize}
+
+Central to this paradigm is the assumption that communication and coordination are difficult to achieve. This is also the point of the toolmakers paradigm, but here the assumption runs deeper. It concerns not only the practical difficulties of communicating and coordinating (the misunderstandings, inconsistencies in mental models, the variations in context), but also the necessity of dealing in environments where an organizational unity of purpose is not certain and where conflicts and differences in priorities abound.
+
+Considering that the majority of the software research community aims to produce processes, practices, and tools that can be prescribed to large portions of the software industry, the preference for detail and the disregard of generalizations by the researchers in this section show a second important assumption: that the detailed exploration and analysis of communication and coordination is in fact valuable for the practice of software development. It produces more subtle findings, and it is unlikely to ever conclude with broad practical generalizations, concrete models of software development, or recipes or processes that can be engineered. That these findings, heavily dependent on context, are not useful for the industry as a whole is a common objection raised against this research.
+
+As before, I now discuss four papers that embody the Shared Understanding paradigm.
+
+
+\subsection{Radical Team Co-location (Teasley \emph{et al.}, 2002)}
+\label{sec:Teasley}
+
+The concept of ``radical co-location'' is an interesting development in the software industry. For decades, office space trends in software development have consisted of moving away from co-location and towards compartmentalization. The cubicle, for instance, is the standard compartmentalization instrument in many software companies. Less common is the private office, which has been shown to correlate with higher productivity \cite{DeMarco1987}, but which incurs in higher direct costs than the cubicle. And the trend towards geographical distribution of software development increases the probability that developers will need to communicate and coordinate with team members at a different city, country, and perhaps time zone.
+
+Radical co-location (which consists of having the entire project team, including a customer representative, located in a single physical room---sometimes called the ``war room'') runs in opposition to these trends. It is not a complete anomaly, however, as it is commonly advocated by some agile methodologies as a mechanism to improve team awareness and communication. But its application represents a significant commitment from large companies accustomed to distributing work geographically.
+
+Teasley \emph{et al.}\ \shortcite{Teasley2002} explored the benefits of radical co-location in the software development of ``a Fortune 100 automobile company''. They justify the need to study war rooms with the assumption that they would increase the speed with which communication breakdowns are overcome:
+
+\begin{quote}
+\emph{Communication breakdowns occur in a number of ways. For example, members of design teams can occasionally mistakenly assume that the others share a common understanding of an issue when in fact they do not. These confusions usually arise when each team member starts with an unstated assumption and is not able to immediately resolve the problem once a conflict is detected. When the team members are physically separated, this error will often not be detected until the following design review meeting when the group meets face-to-face. [...] We believe that co-location of the project team and customers in a war room can be effective in reducing such communication breakdowns and facilitating speedy resolution of conflicts. By improving communication, productivity and timeliness of the projects will also improve.}
+\end{quote}
+
+Teasley \emph{et al.}\ frame this expectation in Shared Understanding terms, arguing that \emph{``communication creates mutually held representations of the work''}, and they treat the development of shared understanding between participants as \emph{``essential to conducting any joint activity.''}
+
+The researchers studied six pilot teams assigned by the company to develop small-medium software projects. They analyzed productivity indicators (the company has a well-developed metrics program, and keeps track of statistics such as function points per staff month), administered questionnaires at the beginning and at the end of the projects, observed two teams in depth for the duration of the projects, and interviewed the team members at project completion.
+
+All of their results point towards an increase in productivity and customer satisfaction by the use of war rooms. The pilot teams outperformed the company baseline productivity numbers, and team members mostly liked the war rooms (although some never got past the feeling of lost privacy and seeming chaos that reigned in those rooms). Subsequent teams outperformed even the pilot teams. The behavioral results provide some glimpses of team members sharing and revisiting their understanding of the project in an environment rich with timely interactions:
+
+\begin{quote}
+\emph{[...] if someone was having difficulty with some aspect of the coding or design, then others walking by, seeing the activity over their shoulders, stopped to help the individual. Also, when one team member was explaining something to another, other team members could overhear and spontaneously interject commentary, clarifications, or corrections. One team member commented that it was a good environment in which to learn. Coming into the team late, he was able to come up to speed very quickly. Another commented that she was able to learn by osmosis; she said that, even if she didn't listen carefully, she could make mental notes of what people were saying.}
+\end{quote}
+
+And yet, although the results are an endorsement for the use of war rooms under some settings (small-to-medium projects with ``timeboxing'' development methods\footnote{In which time is fixed and functionality is not.} and customer representatives available in the same location), they do not prove that the increase in productivity and quality is due to the improved team communication, nor that the team in fact communicated better in this room than in their usual environment. The paper documents a few instances where this is the case. But the increase in productivity and quality could be caused by other factors individually (peer pressure, easy access to a customer representative), or by a combination of them; Teasley \emph{et al.}\ make no attempt to validate their theory analytically.
+
+
+\subsection{The Social Dynamics of Pair Programming (Chong \& Hurlbutt, 2007)}
+
+There are approaches to radical co-location complementary to war rooms. One of them is pair programming. According to Chong and Hurlbutt \shortcite{Chong2007}, pair programming is \emph{``perhaps the most unconventional practice promoted by eXtreme Programming.''} As the name suggests, it consists of programmers sharing and using a single computer in pairs.
+
+There are two reasons that suggest that pair programming is beneficial for software companies. One of them has to do with efficiency; the claim is that having a developer acting as the ``driver'' of the task and the other as the ``navigator'' allows for an easier identification of tactical and strategic issues faced by the duo than what they would achieve programming separately. The second reason relates to the development of shared understanding in the team: having two persons present as every line of code is written helps to ensure that knowledge about the project spreads among the team members, that several people are acquainted with the challenges present in every module, and that if the company loses some employees it still has people with a sophisticated and correct mental model of the inner workings of all pieces of the software.
+
+The efficiency argument has been contested by recent research. Arisholm {et al.}\ \shortcite{Arisholm2007} executed an experiment with nearly three hundred paid subjects to evaluate pair programming; results show no improvements in time or quality, and a net increase in the effort required to produce the same software.\footnote{The findings are questionable, however, as proponents of pair programming claim that significant benefits come from familiarization with the pair, and cannot be observed in a single-day experimental setup. I discuss this in section \ref{sec:Refutability}.}
+
+Chong and Hurlbutt conducted ethnographic observations of two teams where the practice of pair programming was firmly established. The teams worked for different companies. They did not interview their teams, and they did not concern themselves with productivity or quality metrics: their interest was only to report the social dynamics of pair programming.
+
+Partly, their goal was to examine whether in fact pairs of programmers engage in a driver/navigator dynamic. They did not: both programmers seem to perform at the same conceptual level most of the time. Of greater interest for this survey, however, are the observations on the shared context between the pairs:
+
+\begin{quote}
+\emph{Working collaboratively on the same task on the same machine meant that the pairs shared a substantial amount of visual and mental context. On occasion, generally after the pair had negotiated and then agreed to a specific course of action, the programmers sometimes slipped into a mode of behavior where they were exceptionally in sync with one another. [...] Anthony and Ben are so tightly coupled that sentence completion is not required for effective communication. Ben begins to verbalize a train of thought, but Anthony cuts him off, already aware of how the thought ends.\footnote{The paper includes fragments of dialogue between Anthony and Ben (as well as of other pairs) that I will not reproduce here.}}
+\end{quote}
+
+Chong and Hurlbutt's report has other interesting findings about pair programming dynamics, including the disadvantages of pairing programmers with considerably different levels of expertise (the novice merely becomes an obstacle to the expert, and it is questionable that the novice will benefit enough from the experience) and the advantages of allowing for quick keyboard switching. However, for our purposes the important aspects of their paper are these insights into deep collaboration and their implications regarding the advantages of practices such as pair programming in improving the mental models of team members.
+
+
+\subsection{Extreme Programming in Practice (Sharp \& Robinson, 2004)}
+\label{sec:Sharp}
+
+I mentioned the work of Sharp and Robinson above when discussing Process Engineering. It is an excellent example of research following the shared understanding paradigm, and its findings are worth discussing in greater detail.
+
+The paper reports on an ethnographic study of a mature Extreme Programming company. Sharp and Robinson claim that their motivation is \emph{``not to evaluate an agile method as a software development method and the extent to which it may be viable and successful. Rather, our motivation is to gain insight into the culture and community of an agile method as part of a broader agenda of an examination of the culture and community of software engineering''}  \cite{Sharp2004}.
+
+The company under study speculates that it may be the longest running Extreme Programming team. It is formed by fourteen employees in total. The observer spent a week full-time witnessing and taking part of the day-to-day activities of the group (which, with an open space plan, was in effect ``radically co-located''). No quantitative data on performance or quality were collected.
+
+The results from the study are for the most part rich and representative of the research following this paradigm:
+
+\begin{quote}
+\emph{A key characteristic of all the observed activity was that it oriented around a shared purpose, understanding and responsibility within the team. What work needed to be done was negotiated (discussed, decided and agreed) in a shared fashion, the detail of how that work might be executed was similarly a shared negotiation by the team, and responsibility for ensuring that the execution was satisfactorily carried out was collective.}
+\end{quote}
+
+Sharp and Robinson describe several ways in which this sense of shared purpose and understanding manifested. Their report on the team's Planning Game\footnote{One of the twelve XP practices, concerned with determining the scope of the next release of the system as a group.} explains that it consisted of a combination of design, estimation, prioritization, and conflict resolution activities:
+
+\begin{quote}
+\emph{Towards the end of the Planning Game, there was a clear sense of  ``wanting to get on with the real work''. This was not frustration. It was a reflection of the fact that everyone understood what was agreed and needed---and was ready to get on with it.}
+
+\emph{This communal, collective approach creates and sustains a shared purpose and understanding but can take time, as commented on by one of the developers: ``The way we do estimation here is to do it all as a team which has some benefits in that we all have the same vision but it also can go on for a very long time.''}
+\end{quote}
+
+The authors also advance the view, as I did in the previous section, that pair programming (though partly a technical issue) is \emph{``crucially about communicating, sharing and agreeing understanding.''}
+
+Sharp and Robinson note the almost complete lack of documentation in the team. The only documentation available were index cards used to keep track of the items that still need to be developed in the current release; when the items are developed the corresponding cards are destroyed. They speculate that the team's reliance on oral communication over documentation is yet more evidence of their shared purpose and understanding: the argument is that there is no \emph{need} for documentation, since every team member shares an understanding of the current state and plans of their project, cultivated by their practices. And since there seems to be no need to document, but there is certainly a cost to do it, documentation is generally avoided.
+
+A final instance mentioned by Sharp and Robinson regarding the maintenance of a shared understanding in this team was the use of metaphor.\footnote{Metaphor is another XP practice. It proposes to ``guide all development with a simple shared story of how the whole system works \cite{Beck1999}.} They noted that its use to conceptualize the system, to guide its design decisions, and to communicate with non-developers was central to the team's activities. They note that \emph{``it was regarded as a fundamental facilitator for maintaining the shared vision''} within the team.
+
+There are other interesting findings in Sharp and Robinson's study, mostly dealing with the programming culture in the organization they observed. Their insights are notable because they are unusual for a Software Engineering journal: they talk about rhythm and fluidity of activity, of the sustainability of the programming effort in terms of quality of life, and of the ways in which the team's programming philosophy and practices enable these results.
+
+There is an important weakness with the paper, however: all of its findings are based on a single week of observations. Considering the strength of the report's claims, longer observations should be expected. Other explanations for the unusually harmonious workplace they describe are available---starting with the obvious possibility of a Hawthorne effect. Nevertheless, Sharp and Robinson's findings are promising, and call for further exploration.
+
+
+\subsection{Reasons for `Bad' Software Testing (Martin \emph{et al.}, 2007)}
+
+Two of the previous papers were explicit in their discussions of shared understanding for communication and coordination. A few others have been, as well, in previous years \cite{Walz1993}. But many other reseachers seem to subscribe to this paradigm tacitly, in the sense that they are concerned with the challenges of sharing an understanding of context and of goals within team members. However, they describe these issues without abstracting them to concepts such as mental models, awareness, or communication breakdowns.
+
+Martin \emph{et al.}\ \shortcite{Martin2007} provide an example of the latter kind of work. Their subject is not primarily communication and coordination dynamics, but rather the testing of software as it occurs in practice. Although these are seemingly disconnected problems, there is an overlap between them, in that testing in practice necessarily involves engaging in communication and coordination activities.
+
+The authors argue that many current reports of verification and validation in the literature of our field should be considered \emph{``more-so as demonstrations than as reports of how testing is done in practice.''} To address this problem, they conducted an ethnographic study of software developers in a small software company. They performed observations of the organization and interviews with its members throughout 30 days of field work (spread over roughly 9 months). 
+
+Their central finding was that organizations (or at least the organization they studied) practice software testing in a manner that would be classified as ``bad'' or ``unprofessional'' based on the literature of software testing. For instance, their organization did not have a proper testing plan, it was not using test coverage metrics to guide its process, and it was not performing exhaustive security tests. However, the authors found that there were in fact good practical reasons for these decisions, mostly having to do with the well being of the organization.
+
+This can be seen, for instance, in their discussion of how requirements are defined. Without a requirements document, or at least some orally transmitted list of requirements, it is impossible to produce a testing plan. But in this company, requirements are produced in an \emph{ad-hoc} manner:
+
+\begin{quote}
+\emph{Requirements are produced because they seem to make sense in terms of a balance of `can be done', `would be useful to our customers---and may have been requested by some' and `would be good for the product (and therefore market) development'. During the programming phase these requirements become crystallized as the programmers determine exactly how they will be realised (or not) in code.}
+\end{quote}
+
+There are three things to note in this description: first, the process of determining requirements is exploratory; second, it is performed by the programmers (that is, all or most of the organization members); and third, they have organizational goals in mind throughout the process. We can translate this into the terms of the Shared Understanding paradigm: the programmers engage in a process of revising and evolving their mental models; the process is performed as a team so as to share everybody's understanding of the situation and minimize breakdowns; and it consists not only of sharing an understanding of the situation, but of the goals of the organization, which should allow for a better coordination of the team's efforts. I draw these parallels for this point in particular, but they can be established at most of the points in the report that are concerned with communication and coordination dynamics.
+
+
+
+\section{Notes on the previous classification}
+
+Table \ref{ParadigmInfluencesValues} summarizes the key points of this discussion as it relates to coordination and communication studies. However, a few notes are necessary. First, I do not claim to be comprehensive, as I do not think that these are the only paradigms to approach communication and coordination in our field. But I think that they are particularly important (the first due to its prevalence in the field, the second and third due to their promise) and worthy of careful examination.
+
+\begin{table}[tph]
+\caption{\label{ParadigmInfluencesValues} Theoretical Influences and Values of each Paradigm}
+\centering
+\singlespacing
+\footnotesize{\begin{tabular}{p{3.4cm}p{4.4cm}p{5.8cm}}
+\hline \hline
+\vspace{1pt}\bfseries Paradigm & \vspace{1pt}\bfseries ~~~~~Theoretical Influences & \vspace{1pt}\bfseries ~~~~~Typical Values \\
+\hline
+\vspace{10pt}Process Engineering &
+\begin{itemize}
+\item Taylorism (Scientific Management)
+\item Process Improvement
+\end{itemize}
+&
+\begin{itemize}
+\item Predictability, stability
+\item Controlled process improvement
+\item Quantitative measurements
+\item Minimization of discovery and creativity
+\item Abstraction of the human element
+\end{itemize} \\
+\hline
+\vspace{10pt}Information Flow &
+\begin{itemize}
+\item Distributed Cognition
+\item Conduit Metaphor
+\end{itemize}
+&
+\begin{itemize}
+\item Quantification of networks and interactions
+\item Primacy of external activity
+\item Minimization of discovery and creativity
+\item Abstraction of some human elements
+\end{itemize} \\
+\hline
+\vspace{10pt}Shared Understanding &
+\begin{itemize}
+\item Toolmakers' Paradigm
+\item Mental Models
+\end{itemize}
+&
+\begin{itemize}
+\item Richness of phenomena
+\item Incorporation of context to analysis
+\item Primacy of phenomena of breakdown, negotiation, and recovery
+\item Disregard of processes and prescriptions
+\end{itemize} \\
+\hline
+\end{tabular}}
+\end{table}
+
+Second, in linking these paradigms back to foundational theories, I run the risk of establishing inappropriate connections. There may be other currently accepted theories that suit each paradigm better than the ones I selected. But if that were the case, I claim that those potentially better theories would not upset greatly the underlying values and assumptions I discussed.
+
+Third, my classification effort, as all others, sacrifices some nuance for generalization power. It is easier to classify papers than researchers: Herbsleb, for instance, was interested in the challenges of developing shared understanding a decade ago, but eventually arose as one of the leading proponents of the study of socio-technical congruence, which I classify as an Information Flow approach. De Souza and Redmiles' study of dependencies has been partly a Shared Understanding \cite{deSouza2003} and an Information Flow \cite{deSouza2008} effort. And although Damian and Chisan's \shortcite{Damian2006} study of requirements processes was lodged firmly within the Process Engineering paradigm, Damian has moved towards an Information Flow approach recently \cite{Damian2007}.
+
+In any case, the goal of this chapter is not to classify researchers or papers, nor to argue against a diversity of points of view and approaches in our field. Instead, I intended to describe the currently salient aspects of these perspectives in order to decrease the conceptual confusion reigning in our study of communication and coordination. In the remainder of the thesis I will argue for the advantages of the third paradigm and I will articulate a theory of coordination and communication built on its ideas. But first I must address relevant literature from other fields.
